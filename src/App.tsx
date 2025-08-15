@@ -1,5 +1,11 @@
+import Home from "@pages/Home";
+
 function App() {
-  return <div>App</div>;
+  return (
+    <div className="container mx-auto">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
