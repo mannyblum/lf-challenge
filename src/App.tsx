@@ -2,7 +2,7 @@ import Home from "@pages/Home";
 
 function App() {
   return (
-    <div className="container mx-auto">
+    <div role="main" className="container mx-auto">
       <Home />
     </div>
   );

@@ -1,16 +1,21 @@
-import { useState, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar() {
   const [localTerm, setLocalTerm] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLocalTerm(event.target.value);
   };
 
   const handleSearch = () => {
+    if (localTerm.length === 0) {
+      inputRef.current?.focus();
+    }
+
     if (localTerm) {
-      console.log("search api");
+      console.log("searchTerm: ", localTerm);
     }
   };
 
@@ -22,7 +27,12 @@ export default function SearchBar() {
           <div>
             <FaSearch className="text-slate-400 text-2xl ml-4 mr-2" />
           </div>
+          <label className="sr-only" id="searchbar-label">
+            Search
+          </label>
           <input
+            ref={inputRef}
+            aria-labelledby="searchbar-label"
             className="px-4 py-2 text-white placeholder:text-slate-400 text-sm w-full flex outline-none"
             value={localTerm}
             onChange={handleChange}

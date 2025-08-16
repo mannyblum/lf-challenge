@@ -16,6 +16,7 @@ export default defineConfig({
         "coverage/",
         "**/*.d.ts",
         "**/tests/**",
+        "src/main.tsx",
       ],
       provider: "istanbul", // or 'v8'
       reporter: ["text", "html", "lcov"],

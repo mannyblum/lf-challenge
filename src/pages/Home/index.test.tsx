@@ -1,10 +1,10 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Home from ".";
 
 describe("Home", () => {
-  test("should render", () => {
+  it("should render the Home page", () => {
     render(<Home />);
-    expect(screen.getByText("CineHavok")).toBeDefined();
+    expect(screen.getByText("MovieKaos")).toBeDefined();
   });
 });

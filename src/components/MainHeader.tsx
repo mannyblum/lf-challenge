@@ -6,7 +6,7 @@ function Logo() {
       <div className="p-3 mr-4 rounded-xl bg-gradient-to-r from-purple-400 to-pink-400 text-white">
         <FaFilm size={32} className="!bg-transparent" />
       </div>
-      <h1 className="text-white font-sans text-3xl font-bold">CineHavok</h1>
+      <h1 className="text-white font-sans text-3xl font-bold">MovieKaos</h1>
     </div>
   );
 }
