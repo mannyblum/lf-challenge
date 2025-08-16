@@ -1,9 +1,12 @@
+import { useMoviesContext } from "@/hooks/useMoviesContext";
 import { useRef, useState, type ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar() {
   const [localTerm, setLocalTerm] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { dispatch } = useMoviesContext();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLocalTerm(event.target.value);
@@ -16,6 +19,7 @@ export default function SearchBar() {
 
     if (localTerm) {
       console.log("searchTerm: ", localTerm);
+      dispatch({ type: "SET_SEARCH_TERM", payload: localTerm });
     }
   };
 
