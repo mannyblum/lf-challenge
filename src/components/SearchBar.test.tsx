@@ -1,21 +1,27 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import SearchBar from "./SearchBar";
+import ProviderWrapper from "@/context/ProviderWrapper";
 
 describe("SearchBar", () => {
-  it("should render the SearchBar component", () => {
-    render(<SearchBar />);
+  beforeEach(() => {
+    render(<SearchBar />, { wrapper: ProviderWrapper });
+  });
 
+  afterEach(() => {
+    cleanup();
+  });
+
+  it("should render the SearchBar component", () => {
     const inputNode = screen.queryByLabelText("searchbar-label");
     expect(inputNode).toBeDefined();
   });
 
   it("should trigger handleChange as the user types", async () => {
     const user = userEvent.setup();
-    render(<SearchBar />);
 
     const input = screen.getByPlaceholderText("Search for movies...");
     await user.type(input, "batman");
@@ -25,7 +31,6 @@ describe("SearchBar", () => {
 
   it("should focus input field if its empty", async () => {
     const user = userEvent.setup();
-    render(<SearchBar />);
 
     const button = screen.getByRole("button");
     const input = screen.getByPlaceholderText("Search for movies...");
@@ -39,8 +44,6 @@ describe("SearchBar", () => {
   it("should handle the form submission", async () => {
     const user = userEvent.setup();
 
-    render(<SearchBar />);
-
     const button = screen.getByRole("button");
     const input = screen.getByPlaceholderText("Search for movies...");
 
@@ -50,7 +53,6 @@ describe("SearchBar", () => {
     await user.click(button);
 
     expect(logSpy).toHaveBeenCalledWith("searchTerm: ", "batman");
-
     expect(button).toBeDefined();
   });
 });

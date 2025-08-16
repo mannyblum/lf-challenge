@@ -2,7 +2,7 @@ import type { Movie } from "@/types/movies";
 import type { Dispatch } from "react";
 import { createContext } from "react";
 
-interface MoviesState {
+export interface MoviesState {
   searchTerm: string;
   movies: Movie[] | null;
 }
@@ -21,7 +21,7 @@ export const actions = {
   SET_SEARCH_TERM: "SET_SEARCH_TERM",
 };
 
-type Action = { type: "SET_SEARCH_TERM"; payload: string };
+type Action = { type: typeof actions.SET_SEARCH_TERM; payload: string };
 
 export const MoviesContext = createContext<MoviesContextType | undefined>(
   undefined
