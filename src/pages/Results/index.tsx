@@ -5,7 +5,13 @@ import { CiCalendar } from "react-icons/ci";
 
 export default function Results() {
   const { state } = useMoviesContext();
-  console.log("state", state);
+
+  const getGenreName = (genreId: number) => {
+    return state?.genres?.find((genre) => {
+      return genre.id === genreId;
+    });
+  };
+
   return (
     <>
       <div>
@@ -17,18 +23,18 @@ export default function Results() {
                 data-slot="card"
                 className="mb-8 flex flex-col gap-6 rounded-xl border shadow-sm bg-slate-800/30 border-slate-700/30 hover:bg-slate-800/50 hover:border-slate-600/50 group cursor-pointer transition-all duration-300 hover:scale-105"
               >
-                <div data-slot="card-content">
-                  <div className="relative">
+                <div data-slot="card-content h-full">
+                  <div className="relative h-full">
                     <img
                       src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                       className={`w-full h-80 object-cover rounded-t-xl`}
                       alt={movie.original_title}
                     />
-                    <div className="p-4">
+                    <div className="p-4 h-full">
                       <h4 className="text-white group-hover:text-purple-300 line-clamp-1 transition-colors font-semibold mb-2">
                         {movie.original_title}
                       </h4>
-                      <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-4 justify-between`">
                         <div className="flex items-center gap-3 text-sm text-slate-400 mb-2">
                           <div className="flex items-center gap-1">
                             <CiCalendar className="text-lg" />
@@ -44,18 +50,21 @@ export default function Results() {
                             )}
                         </div>
                         <div className="flex flex-row flex-wrap gap-2 mb-2">
-                          {movie.genre_ids.map((genre) => {
+                          {movie.genre_ids.map((genreId) => {
+                            const genreName =
+                              getGenreName(genreId)?.name ?? null;
+
                             return (
                               <div
-                                key={genre}
+                                key={genreId}
                                 className="inline-flex justify-center items-center rounded-md border border-transparent bg-slate-700/50 px-2 py-0.5 font-medium w-fit whitespace-nowrap shrink-0 text-slate-300 text-sm"
                               >
-                                {genre}
+                                <>{genreName}</>
                               </div>
                             );
                           })}
                         </div>
-                        <p className="text-sm text-slate-400 line-clamp-5">
+                        <p className="text-sm text-slate-400 line-clamp-5 justify-self-end">
                           {movie.overview || "No description available"}
                         </p>
                       </div>

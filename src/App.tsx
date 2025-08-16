@@ -6,7 +6,10 @@ import Results from "./pages/Results";
 
 import { useMoviesContext } from "./hooks/useMoviesContext";
 
-import moviesQueryOptions from "./queryOptions/moviesQueryOptions";
+import {
+  moviesQueryOptions,
+  genresQueryOptions,
+} from "./queryOptions/moviesQueryOptions";
 
 function App() {
   const { state, dispatch } = useMoviesContext();
@@ -14,6 +17,14 @@ function App() {
   const { isFetching, isSuccess, isError, data, error, refetch } = useQuery(
     moviesQueryOptions(state.searchTerm)
   );
+
+  const { data: genresData } = useQuery(genresQueryOptions());
+
+  useEffect(() => {
+    if (genresData) {
+      dispatch({ type: "SET_GENRES", payload: genresData.genres });
+    }
+  }, [genresData]);
 
   useEffect(() => {
     if (state.searchTerm.length > 0) {
@@ -26,8 +37,6 @@ function App() {
       dispatch({ type: "SET_MOVIES", payload: data.results });
     }
   }, [data]);
-
-  console.log("state", state);
 
   if (isError) {
     return <span>Error: {error.message}</span>;
@@ -42,8 +51,5 @@ function App() {
 
 export default App;
 
-// TODO: setup react-query
-// TODO: finish connecting to API
-// TODO: results page
 // TODO: details page
 // TODO: browse page (OPTIONAL)
