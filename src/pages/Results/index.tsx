@@ -1,0 +1,72 @@
+import { useMoviesContext } from "@/hooks/useMoviesContext";
+import type { Movie } from "@/types/movies";
+
+import { CiCalendar } from "react-icons/ci";
+
+export default function Results() {
+  const { state } = useMoviesContext();
+  console.log("state", state);
+  return (
+    <>
+      <div>
+        <div className="grid grid-cols-3 gap-4">
+          {state.movies?.map((movie: Movie) => {
+            return (
+              <div
+                key={movie.id}
+                data-slot="card"
+                className="mb-8 flex flex-col gap-6 rounded-xl border shadow-sm bg-slate-800/30 border-slate-700/30 hover:bg-slate-800/50 hover:border-slate-600/50 group cursor-pointer transition-all duration-300 hover:scale-105"
+              >
+                <div data-slot="card-content">
+                  <div className="relative">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      className={`w-full h-80 object-cover rounded-t-xl`}
+                      alt={movie.original_title}
+                    />
+                    <div className="p-4">
+                      <h4 className="text-white group-hover:text-purple-300 line-clamp-1 transition-colors font-semibold mb-2">
+                        {movie.original_title}
+                      </h4>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-3 text-sm text-slate-400 mb-2">
+                          <div className="flex items-center gap-1">
+                            <CiCalendar className="text-lg" />
+                            <p className="leading-[1.1] pt-0.5">
+                              {movie.release_date.toString()}
+                            </p>
+                          </div>
+                          {movie.runtime &&
+                            -(
+                              <div className="flex items-center gap-1">
+                                {movie.runtime}
+                              </div>
+                            )}
+                        </div>
+                        <div className="flex flex-row flex-wrap gap-2 mb-2">
+                          {movie.genre_ids.map((genre) => {
+                            return (
+                              <div
+                                key={genre}
+                                className="inline-flex justify-center items-center rounded-md border border-transparent bg-slate-700/50 px-2 py-0.5 font-medium w-fit whitespace-nowrap shrink-0 text-slate-300 text-sm"
+                              >
+                                {genre}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <p className="text-sm text-slate-400 line-clamp-5">
+                          {movie.overview || "No description available"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
+}

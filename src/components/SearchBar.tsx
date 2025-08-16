@@ -18,7 +18,6 @@ export default function SearchBar() {
     }
 
     if (localTerm) {
-      console.log("searchTerm: ", localTerm);
       dispatch({ type: "SET_SEARCH_TERM", payload: localTerm });
     }
   };
