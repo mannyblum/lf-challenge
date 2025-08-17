@@ -43,9 +43,7 @@ function App() {
   }
 
   return (
-    <div role="main" className="container mx-auto">
-      {isSuccess && !isFetching && data.results ? <Results /> : <Home />}
-    </div>
+    <>{isSuccess && !isFetching && data.results ? <Results /> : <Home />}</>
   );
 }
 

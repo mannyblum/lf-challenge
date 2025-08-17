@@ -1,7 +1,9 @@
+import MainNav from "@/components/MainNav";
 import { useMoviesContext } from "@/hooks/useMoviesContext";
 import type { Movie } from "@/types/movies";
 
 import { CiCalendar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa6";
 
 export default function Results() {
   const { state } = useMoviesContext();
@@ -14,7 +16,14 @@ export default function Results() {
 
   return (
     <>
-      <div>
+      <MainNav />
+      <div role="main" className="container mx-auto">
+        <div className="my-8">
+          <h2 className="text-3xl font-bold text-white mb-2">
+            Search Results for "{state.searchTerm}"
+          </h2>
+          <p className="text-slate-400">{state.movies?.length} movies found</p>
+        </div>
         <div className="grid grid-cols-3 gap-4">
           {state.movies?.map((movie: Movie) => {
             return (
@@ -25,6 +34,12 @@ export default function Results() {
               >
                 <div data-slot="card-content h-full">
                   <div className="relative h-full">
+                    <div className="absolute top-3 right-3 text-green-400 bg-black/70 px-2 py-1 rounded-full flex items-center gap-1.5">
+                      <FaStar />
+                      <span className="text-sm font-semibold py-0.5 leading-[1]">
+                        8.5
+                      </span>
+                    </div>
                     <img
                       src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                       className={`w-full h-80 object-cover rounded-t-xl`}
@@ -39,7 +54,7 @@ export default function Results() {
                           <div className="flex items-center gap-1">
                             <CiCalendar className="text-lg" />
                             <p className="leading-[1.1] pt-0.5">
-                              {movie.release_date.toString()}
+                              {new Date(movie.release_date).getFullYear()}
                             </p>
                           </div>
                           {movie.runtime &&
