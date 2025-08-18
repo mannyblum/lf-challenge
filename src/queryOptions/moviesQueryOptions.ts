@@ -11,10 +11,11 @@ export function moviesQueryOptions(term: string) {
       return fetchMovies(term);
     },
     enabled: !!term,
-    staleTime: 1000 * 60 * 5,
-    gcTime: 1000 * 60 * 10,
+    staleTime: 1,
+    gcTime: 1,
+    // staleTime: 1000 * 60 * 5,
+    // gcTime: 1000 * 60 * 10,
     refetchOnWindowFocus: false,
-    // placeholderData: (previousData) => previousData,
   });
 }
 
@@ -24,10 +25,37 @@ export function genresQueryOptions() {
     queryFn: () => {
       return fetchGenres();
     },
+    staleTime: 1,
+    gcTime: 1,
+    // staleTime: 1000 * 60 * 5,
+    // gcTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
+  });
+}
+
+export function popularMoviesQueryOptions() {
+  return queryOptions({
+    queryKey: ["popular-movies"],
+    queryFn: () => {
+      return fetchPopularMovies();
+    },
+    staleTime: 1,
+    gcTime: 1,
+    // staleTime: 1000 * 60 * 5,
+    // gcTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
+  });
+}
+
+export function trendingMoviesQueryOptions() {
+  return queryOptions({
+    queryKey: ["trending-movies"],
+    queryFn: () => {
+      return fetchTrendingMovies();
+    },
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 10,
     refetchOnWindowFocus: false,
-    // placeholderData: (previousData) => previousData,
   });
 }
 
@@ -46,6 +74,24 @@ const fetchGenres = async () => {
 
   const response = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
+  );
+  return await response.json();
+};
+
+const fetchPopularMovies = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+  );
+  return await response.json();
+};
+
+const fetchTrendingMovies = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const response = await fetch(
+    `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${API_KEY}`
   );
   return await response.json();
 };

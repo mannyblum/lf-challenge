@@ -1,3 +1,4 @@
+import Trending from "@/components/Trending";
 import MainHeader from "@components/MainHeader";
 import SearchBar from "@components/SearchBar";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="flex justify-center items-center flex-col mx-auto">
         <MainHeader />
         <SearchBar />
+        <Trending />
       </div>
     </div>
   );

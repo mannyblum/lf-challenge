@@ -24,13 +24,14 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
 
     if (localTerm) {
       dispatch({ type: "SET_SEARCH_TERM", payload: localTerm });
+      dispatch({ type: "RESET_MOVIES" });
     }
   };
 
   return (
     <form
       action={handleSearch}
-      className={` max-w-2xl w-full py-2 ${
+      className={`flex-grow max-w-2xl w-full py-2 ${
         size !== "small" ? "mb-16 mx-auto" : ""
       } `}
     >
