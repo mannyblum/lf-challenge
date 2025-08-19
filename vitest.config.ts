@@ -30,6 +30,10 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@pages": path.resolve(__dirname, "./src/pages"),
+      "@app": path.resolve(__dirname, "./src/app"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@slices": path.resolve(__dirname, "./src/slices"),
+      "@types": path.resolve(__dirname, "./src/types"),
     },
   },
 });

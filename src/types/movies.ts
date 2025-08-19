@@ -64,9 +64,3 @@ export interface Credits {
   cast: CastMember[];
   crew: CrewMember[];
 }
-
-export interface Credits {
-  id: number;
-  cast: CastMember[];
-  crew: CrewMember[];
-}
