@@ -1,28 +1,35 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
-import { persistQueryClient } from "@tanstack/query-persist-client-core";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
+// import { persistQueryClient } from "@tanstack/query-persist-client-core";
 
-import { MoviesProvider } from "./context/MoviesProvider.tsx";
+// import { MoviesProvider } from "./context/MoviesProvider.tsx";
 import App from "./App.tsx";
+import { BrowserRouter } from "react-router";
+import { Provider } from "react-redux";
+import { store } from "./app/store.ts";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
-const persister = createAsyncStoragePersister({
-  storage: window.localStorage,
-});
+// const persister = createAsyncStoragePersister({
+//   storage: window.localStorage,
+// });
 
-persistQueryClient({
-  queryClient,
-  persister,
-  maxAge: 1000 * 60 * 60, // 1 hour
-});
+// persistQueryClient({
+//   queryClient,
+//   persister,
+//   maxAge: 1000 * 60 * 60, // 1 hour
+// });
 
 export default function MoviesApp() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <MoviesProvider>
+    // <QueryClientProvider client={queryClient}>
+    //   <MoviesProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-      </MoviesProvider>
-    </QueryClientProvider>
+      </BrowserRouter>
+    </Provider>
+    //   </MoviesProvider>
+    // </QueryClientProvider>
   );
 }

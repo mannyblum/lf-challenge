@@ -1,4 +1,6 @@
-import { useMoviesContext } from "@/hooks/useMoviesContext";
+import { useAppDispatch } from "@/hooks/rtk";
+import { useNavigate } from "react-router";
+import { setSearchTerm } from "@/slices/moviesSlice";
 import { useRef, useState, type ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
 
@@ -11,7 +13,8 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
   const [localTerm, setLocalTerm] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { dispatch } = useMoviesContext();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLocalTerm(event.target.value);
@@ -23,8 +26,8 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
     }
 
     if (localTerm) {
-      dispatch({ type: "SET_SEARCH_TERM", payload: localTerm });
-      dispatch({ type: "RESET_MOVIES" });
+      dispatch(setSearchTerm(localTerm));
+      navigate("/results/" + localTerm);
     }
   };
 

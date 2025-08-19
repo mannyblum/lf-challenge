@@ -42,4 +42,31 @@ export interface ProductionCountry {
 export interface SpokenLanguage {
   iso_639_1: number;
   name: string;
+  english_name: string;
+}
+
+export interface CrewMember {
+  id: number;
+  name: string;
+  job: string;
+}
+
+export interface CastMember {
+  id: number;
+  name: string;
+  original_name: string;
+  profile_path: string | null;
+  character: string;
+}
+
+export interface Credits {
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
+}
+
+export interface Credits {
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
 }

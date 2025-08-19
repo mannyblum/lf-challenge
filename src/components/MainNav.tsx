@@ -1,17 +1,16 @@
-import { useMoviesContext } from "@/hooks/useMoviesContext";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
+import { useNavigate } from "react-router";
 
 export default function MainNav() {
-  const { dispatch } = useMoviesContext();
+  const navigate = useNavigate();
 
   const goToHome = () => {
-    dispatch({ type: "RESET_MOVIES" });
-    dispatch({ type: "SET_CURRENT_NAV", payload: "home" });
+    navigate("/", { replace: true });
   };
 
   const goToBrowse = () => {
-    dispatch({ type: "SET_CURRENT_NAV", payload: "browse" });
+    navigate("/browse", { replace: true });
   };
 
   return (

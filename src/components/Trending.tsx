@@ -1,18 +1,25 @@
-import { useMoviesContext } from "@/hooks/useMoviesContext";
-import type { Movie } from "@/types/movies";
-import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/hooks/rtk";
+import { useGetTrendingMoviesQuery } from "@/slices/moviesApi";
+import { setSelectedMovieId } from "@/slices/moviesSlice";
 import { FiTrendingUp } from "react-icons/fi";
+import { useNavigate } from "react-router";
 
 export default function Trending() {
-  const { state } = useMoviesContext();
-  const [topFive, setTopFive] = useState<Movie[]>();
+  // TODO: implement loading
+  const { data, isLoading, isSuccess } = useGetTrendingMoviesQuery();
 
-  useEffect(() => {
-    if (state.trendingMovies) {
-      const slicedArray = state.trendingMovies.slice(0, 5);
-      setTopFive(slicedArray);
-    }
-  }, [state]);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const trendingMovies = data || [];
+  const topFive = trendingMovies.slice(0, 5);
+
+  const handleGetMovieDetails = (movieId: number) => {
+    dispatch(setSelectedMovieId(movieId));
+    navigate("/details/" + movieId);
+  };
+
+  if (!isSuccess) return;
 
   return (
     <div className="flex flex-col justify-center mx-16">
@@ -25,6 +32,7 @@ export default function Trending() {
           return (
             <li
               key={movie.id}
+              onClick={() => handleGetMovieDetails(movie.id)}
               className="px-4 py-2 bg-slate-800/30 hover:bg-slate-700/50 border border-slate-700/30 hover:border-slate-600/50 rounded-full text-slate-300 hover:text-white transition-all duration-200 hover:scale-105 backdrop-blur-sm"
             >
               {movie.original_title || movie.title}
