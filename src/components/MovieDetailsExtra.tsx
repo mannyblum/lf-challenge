@@ -105,14 +105,20 @@ export default function MovieDetailsExtra({
           {activeTab === "tab2" && (
             <div className={`tab`}>
               <div className="production-details mb-12">
-                <h2 className="text-3xl font-bold text-white mb-6">Cast</h2>
+                <h2 className="text-3xl font-bold text-white mb-6">Details</h2>
                 <div className="grid grid-cols-2 gap-8">
                   <div className="text-xl space-y-3">
-                    <div className="flex justify-between gap-6 border-b border-slate-700/30 py-2">
+                    <div
+                      data-testid="director"
+                      className="flex justify-between gap-6 border-b border-slate-700/30 py-2"
+                    >
                       <span className="text-slate-400">Director</span>
                       <span className="text-white text-right">{director}</span>
                     </div>
-                    <div className="flex justify-between gap-6 border-b border-slate-700/30 py-2">
+                    <div
+                      data-testid="writers"
+                      className="flex justify-between gap-6 border-b border-slate-700/30 py-2"
+                    >
                       <span className="text-slate-400">Writers</span>
                       <span className="text-white text-right">
                         {writers?.join(", ")}
