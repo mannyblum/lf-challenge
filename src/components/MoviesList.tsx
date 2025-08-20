@@ -39,7 +39,10 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
   const classNames = `mb-8 flex flex-col gap-6 rounded-xl border shadow-sm bg-slate-800/30 border-slate-700/30 hover:bg-slate-800/50 hover:border-slate-600/50 group cursor-pointer transition-all duration-300 hover:scale-105 ${cardHeight}`;
 
   return (
-    <div className={`grid ${related ? "grid-cols-4" : "grid-cols-3"} gap-4`}>
+    <div
+      data-testid="movie-list"
+      className={`grid ${related ? "grid-cols-4" : "grid-cols-3"} gap-4`}
+    >
       {movies.map((movie: Movie) => {
         return (
           <div
@@ -86,6 +89,10 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                           {movie.genre_ids.map((genreId) => {
                             const genreName =
                               getGenreName(genreId)?.name ?? null;
+
+                            console.log("genreId", genreId);
+                            console.log("genreName", genreName);
+                            console.log("getGenreName", getGenreName(genreId));
 
                             return (
                               <div

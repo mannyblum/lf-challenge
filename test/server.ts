@@ -27,7 +27,25 @@ const movies = [
     budget: 11000000,
   },
 ];
-const genres = [];
+
+const genres = [
+  {
+    id: 1,
+    name: "Action",
+  },
+  {
+    id: 2,
+    name: "Adventure",
+  },
+  {
+    id: 3,
+    name: "Comedy",
+  },
+  {
+    id: 4,
+    name: "Drama",
+  },
+];
 
 export const handlers = [
   http.get(`https://api.themoviedb.org/3/trending/movie/day`, async () => {
@@ -35,8 +53,9 @@ export const handlers = [
     return HttpResponse.json({ results: movies });
   }),
 
-  http.get(`https://api.themoviedb.org/3/genre/movie/list`, () => {
-    return HttpResponse.json(genres);
+  http.get(`https://api.themoviedb.org/3/genre/movie/list`, async () => {
+    await delay(150);
+    return HttpResponse.json({ genres: genres });
   }),
 ];
 
