@@ -2,6 +2,7 @@ import type { Genre, Movie, Credits } from "@/types/movies";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
+console.log({ API_KEY });
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",

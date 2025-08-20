@@ -5,12 +5,12 @@ import {
 } from "@testing-library/react";
 import React, { type ReactElement } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router";
+import { BrowserRouter } from "react-router";
 
 const AllProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
-      <Router>{children}</Router>
+      <BrowserRouter>{children}</BrowserRouter>
     </Provider>
   );
 };
