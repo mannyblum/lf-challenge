@@ -6,7 +6,8 @@ import { useNavigate } from "react-router";
 
 export default function Trending() {
   // TODO: implement loading
-  const { data, isLoading, isSuccess } = useGetTrendingMoviesQuery();
+  const { data, isLoading, isSuccess, isError, error } =
+    useGetTrendingMoviesQuery();
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

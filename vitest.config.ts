@@ -3,7 +3,7 @@ import path from "path";
 
 export default defineConfig({
   test: {
-    setupFiles: ["./vitest.setup.js"],
+    setupFiles: ["./vitest.setup.ts"],
     globals: true,
     environment: "jsdom",
     includeSource: ["src/**/*.{js,ts,jsx,tsx}"],

@@ -3,6 +3,14 @@ import "@testing-library/jest-dom";
 import { afterAll, afterEach, beforeAll } from "vitest";
 import { server } from "./test/server";
 
+// Make sure fetch & AbortController are consistent
+import { fetch, Headers, Request, Response } from "undici";
+
+global.fetch = fetch as any;
+global.Headers = Headers as any;
+global.Request = Request as any;
+global.Response = Response as any;
+
 // Start the server before all tests
 beforeAll(() => server.listen());
 
