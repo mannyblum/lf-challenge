@@ -326,11 +326,11 @@ describe("moviesApi", () => {
     const store = makeStore();
 
     const result = await store.dispatch(
-      moviesApi.endpoints.getMovies.initiate("Mel Brooks")
+      moviesApi.endpoints.getMovies.initiate("Spaceballs")
     );
 
     expect(result.status).toBe("fulfilled");
-    expect(result.data.results).toEqual(mockMovies);
+    expect(result.data.results).toEqual(mockMovies[0]);
   });
 
   it("appends api_key when url has no query params", async () => {

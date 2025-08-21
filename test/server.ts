@@ -163,6 +163,12 @@ export const credits = {
 };
 
 export const handlers = [
+  // Movie Details
+  http.get(`https://api.themoviedb.org/3/search/movie`, async () => {
+    await delay(150);
+    return HttpResponse.json({ results: movies[0] });
+  }),
+
   // Trending Movies Mock
   http.get(`https://api.themoviedb.org/3/trending/movie/day`, async () => {
     await delay(150);
