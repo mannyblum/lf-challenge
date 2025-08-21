@@ -42,7 +42,11 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
   return (
     <div
       data-testid="movie-list"
-      className={`grid ${related ? "grid-cols-4" : "grid-cols-3"} gap-4`}
+      className={`grid ${
+        related
+          ? "lg:grid-cols-4 md:grid-cols-2 grid-cols-1"
+          : "lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
+      } gap-4`}
     >
       {movies.map((movie: Movie) => {
         return (
@@ -66,14 +70,14 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                   alt={movie.original_title}
                 />
                 <div className="p-4">
-                  <h4 className="text-white group-hover:text-purple-300 line-clamp-1 transition-colors font-semibold mb-2">
+                  <h4 className="text-white group-hover:text-purple-300 line-clamp-1 transition-colors font-semibold mb-2 lg:text-lg md:text-xl text-2xl">
                     {movie.original_title}
                   </h4>
                   <div className="flex flex-col gap-4 justify-between`">
                     <div className="flex items-center gap-3 text-sm text-slate-400 mb-2">
                       <div className="flex items-center gap-1">
-                        <CiCalendar className="text-lg" />
-                        <p className="leading-[1.1] pt-0.5">
+                        <CiCalendar className="md:text-lg text-2xl" />
+                        <p className="leading-[1.1] pt-0.5 md:text-md text-lg">
                           {renderReleaseYear(movie.release_date) || "Unknown"}
                         </p>
                       </div>
@@ -94,14 +98,14 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                             return (
                               <div
                                 key={genreId}
-                                className="inline-flex justify-center items-center rounded-md border border-transparent bg-slate-700/50 px-2 py-0.5 font-medium w-fit whitespace-nowrap shrink-0 text-slate-300 text-xs"
+                                className="inline-flex justify-center items-center rounded-md border border-transparent bg-slate-700/50 px-2 py-0.5 font-medium w-fit whitespace-nowrap shrink-0 text-slate-300 md:text-xs text-lg"
                               >
                                 <>{genreName}</>
                               </div>
                             );
                           })}
                         </div>
-                        <p className="text-sm text-slate-400 line-clamp-5 justify-self-end">
+                        <p className="md:text-sm text-lg text-slate-400 line-clamp-5 justify-self-end">
                           {movie.overview || "No description available"}
                         </p>
                       </>

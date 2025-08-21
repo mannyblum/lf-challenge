@@ -2,11 +2,15 @@ import { FaFilm } from "react-icons/fa6";
 
 interface LogoProps {
   size?: string;
+  onClick: () => void;
 }
 
-export default function Logo({ size }: LogoProps) {
+export default function Logo({ size, onClick }: LogoProps) {
   return (
-    <div className="flex flex-row items-center justify-center">
+    <div
+      className="flex flex-row items-center justify-center"
+      onClick={onClick}
+    >
       <div
         className={`${
           size === "small" ? "p-2 mr-2" : "p-3 mr-4"

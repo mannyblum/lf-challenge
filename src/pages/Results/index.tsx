@@ -34,7 +34,7 @@ export default function Results() {
     return (
       <>
         <MainNav />
-        <div role="main" className="container mx-auto">
+        <div role="main" className="container mx-auto px-4">
           <div className="my-8">
             <h2 className="text-3xl font-bold text-white mb-2">
               Search Results for "{term}"

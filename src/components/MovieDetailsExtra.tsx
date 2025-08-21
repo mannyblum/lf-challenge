@@ -55,15 +55,15 @@ export default function MovieDetailsExtra({
   ];
 
   return (
-    <div className="container mx-auto py-12">
-      <div className="tabs">
+    <div className="container mx-auto md:py-12">
+      <div className="tabs px-4">
         <div className="tab-buttons mb-10">
           <div className="grid justify-center items-center grid-cols-4 rounded-lg h-10 w-full bg-slate-800/30 border border-slate-700/30 text-[#a1a1a1]">
             {tabs.map((tab) => {
               return (
                 <button
                   key={tab.id}
-                  className={`active data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300 inline-flex flex-1 items-center justify-center gap=1.5 rounded-md border border-transparent px-2 py-1 font-medium`}
+                  className={`active data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300 text-sm lg:text-lg inline-flex flex-1 items-center justify-center gap=1.5 rounded-md border border-transparent px-2 py-1 font-medium`}
                   data-tab={tab.id}
                   data-state={activeTab === tab.id ? "active" : "inactive"}
                   onClick={() => setActiveTab(tab.id)}
@@ -108,7 +108,7 @@ export default function MovieDetailsExtra({
             <div className={`tab`}>
               <div className="production-details mb-12">
                 <h2 className="text-3xl font-bold text-white mb-6">Details</h2>
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-2 gap-8">
                   <div className="text-xl space-y-3">
                     <div
                       data-testid="director"
@@ -153,7 +153,7 @@ export default function MovieDetailsExtra({
             <div className={`tab`}>
               <div className="cast mb-12">
                 <h2 className="text-3xl font-bold text-white mb-6">Cast</h2>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
                   {credits?.cast?.slice(0, 9).map((actor: CastMember) => (
                     <div
                       key={actor.id + "-" + actor.character}
@@ -178,7 +178,7 @@ export default function MovieDetailsExtra({
               </div>
               <div className="crew">
                 <h2 className="text-3xl font-bold text-white mb-6">Crew</h2>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   {credits.crew.slice(0, 10).map((crew: CrewMember) => {
                     return (
                       <div

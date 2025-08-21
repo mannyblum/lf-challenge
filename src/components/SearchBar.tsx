@@ -62,7 +62,7 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
             aria-labelledby="searchbar-label"
             className={`${
               size === "small" ? "p-1" : "px-4 py-2"
-            } text-white placeholder:text-slate-400 text-sm w-full flex outline-none`}
+            } text-white placeholder:text-slate-400 sm:placeholder:text-xl md:placeholder:text-lg text-md w-full flex outline-none`}
             value={localTerm}
             onChange={handleChange}
             name="movie search"

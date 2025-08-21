@@ -15,12 +15,12 @@ export default function MainNav() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
-      <div className="container mx-auto py-3">
+      <div className="container mx-auto lg:py-3 px-4 py-4">
         <div className="flex flex-row gap-5 items-center justify-between">
-          <Logo size="small" />
+          <Logo size="small" onClick={goToHome} />
           <SearchBar size="small" noButton />
 
-          <div className="flex-shrink-1 flex gap-8">
+          <div className="flex-shrink-1 gap-8 hidden lg:block lg:flex">
             <button
               onClick={goToHome}
               className="bg-transparent cursor-pointer rounded-md px-4 py-2 inline-flex items-center justify-centter gap-2 text-sm font-medium text-slate-300 hover:white hover:bg-[#262626]"

@@ -63,7 +63,7 @@ export default function Details() {
         </div>
         <div className="absolute z-10 p-6 top-0 left-0 right-0">
           <div className="container mx-auto z-10">
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
               <div></div>
               <div className="col-span-2">
                 <h1 className="text-7xl font-bold text-white text-shadow-black text-shadow-md mb-4">

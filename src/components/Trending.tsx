@@ -25,7 +25,9 @@ export default function Trending() {
     <div className="flex flex-col justify-center mx-16">
       <div className="flex items-center justify-center gap-4 mb-6">
         <FiTrendingUp className="text-purple-400 h-5 w-5 font-semibold" />
-        <h3 className="text-lg font-semibold text-slate-300">Trending Now</h3>
+        <h3 className="sm:text-lg text-2xl font-semibold text-slate-300">
+          Trending Now
+        </h3>
       </div>
       <ul className="flex flex-row flex-wrap justify-center gap-4">
         {topFive?.map((movie) => {
