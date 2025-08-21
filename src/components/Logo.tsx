@@ -2,7 +2,7 @@ import { FaFilm } from "react-icons/fa6";
 
 interface LogoProps {
   size?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function Logo({ size, onClick }: LogoProps) {
