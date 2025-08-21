@@ -32,22 +32,6 @@ export const baseQuery = fetchBaseQuery({
 
 const baseQueryWithApiKey = createBaseQueryWithApiKey(baseQuery, API_KEY);
 
-// export const baseQueryWithApiKey: BaseQueryFn<
-//   string | FetchArgs,
-//   unknown,
-//   FetchBaseQueryError
-// > = async (args, api, extraOptions) => {
-//   let newArgs = args;
-//   if (typeof newArgs === "string") {
-//     newArgs = { url: newArgs };
-//   }
-//   console.log("newargs", newArgs);
-//   const { url, ...rest } = newArgs;
-//   const newUrl = `${url}${url.includes("?") ? "&" : "?"}api_key=${API_KEY}`;
-
-//   return baseQuery({ url: newUrl, ...rest }, api, extraOptions);
-// };
-
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
   baseQuery: baseQueryWithApiKey,

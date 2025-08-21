@@ -4,6 +4,8 @@ import { useGetMoviesQuery } from "@/slices/moviesApi";
 import MoviesList from "@/components/MoviesList";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
+import Loading from "@/components/Loading";
+import NotFound from "@/components/NotFound";
 
 export default function Results() {
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ export default function Results() {
     isError,
   } = useGetMoviesQuery(term, { skip: !term });
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error:</div>;
 
   if (isSuccess && !movies?.length) {
@@ -37,9 +39,15 @@ export default function Results() {
             <h2 className="text-3xl font-bold text-white mb-2">
               Search Results for "{term}"
             </h2>
-            <p className="text-slate-400">{movies?.length} movies found</p>
+            <p className="text-slate-400">
+              {movies?.results.length} movies found
+            </p>
           </div>
-          {movies.results && <MoviesList movies={movies.results} />}
+          {movies.results.length > 0 ? (
+            <MoviesList movies={movies.results} />
+          ) : (
+            <NotFound />
+          )}
         </div>
       </>
     );

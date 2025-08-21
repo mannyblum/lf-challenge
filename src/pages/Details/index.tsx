@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import MainNav from "@/components/MainNav";
 import MovieDetailsExtra from "@/components/MovieDetailsExtra";
 import { useAppSelector } from "@/hooks/rtk";
@@ -42,7 +43,7 @@ export default function Details() {
   };
 
   if (!movieDetails || !credits || !relatedMovies) {
-    return <div className="text-white">Loading Movie Details</div>;
+    return <Loading />;
   }
 
   return (

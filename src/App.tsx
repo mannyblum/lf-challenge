@@ -10,6 +10,7 @@ import {
   useGetPopularMoviesQuery,
   useGetTrendingMoviesQuery,
 } from "./slices/moviesApi";
+import NotFound from "./components/NotFound";
 
 function App() {
   useGetGenresQuery();
@@ -22,6 +23,7 @@ function App() {
       <Route path="results/:term" element={<Results />} />
       <Route path="browse" element={<Browse />} />
       <Route path="details/:movieId" element={<Details />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
