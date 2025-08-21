@@ -88,7 +88,7 @@ describe("MoviesList component", () => {
     const testId = screen.getByTestId("movie-list");
 
     await waitFor(() => {
-      expect(testId).toHaveClass("grid-cols-4");
+      expect(testId).toHaveClass("lg:grid-cols-4");
     });
   });
 });
