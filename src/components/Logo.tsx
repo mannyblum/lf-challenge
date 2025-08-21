@@ -24,6 +24,7 @@ export default function Logo({ size, onClick }: LogoProps) {
       </div>
       <h1
         role="heading"
+        aria-level={1}
         className={`${
           size === "small" ? "text-lg" : "text-2xl"
         } text-white font-sans font-bold`}
