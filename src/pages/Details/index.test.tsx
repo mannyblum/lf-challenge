@@ -27,7 +27,6 @@ vi.mock("react-router", async () => {
   return {
     ...actual,
     useNavigate: () => mockedUseNavigate,
-    // useParams: () => ({ movieId: "1" }),
     useParams: vi.fn(),
   };
 });
@@ -71,6 +70,10 @@ const mockMovie = {
 };
 
 describe("Details", () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it("should use selectedMovieId when is not -1", async () => {
     (useAppSelector as unknown as Mock).mockReturnValue(1);
     (useParams as Mock).mockReturnValue({ movieId: "10" });
@@ -133,7 +136,9 @@ describe("Details", () => {
     render(<Details />);
 
     await waitFor(() => {
-      expect(screen.getByText(/Loading Movie Details/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Preparing your cinematic experience.../i)
+      ).toBeInTheDocument();
     });
   });
 
@@ -184,6 +189,20 @@ describe("Details", () => {
   });
 
   it("should render release year", () => {
+    (useGetMovieDetailsQuery as Mock).mockReturnValue({
+      data: mockMovie,
+    });
+    (useGetMovieCreditsQuery as Mock).mockReturnValue({
+      data: {
+        id: 1,
+        cast: [],
+        crew: [],
+      },
+    });
+    (useGetRelatedMoviesQuery as Mock).mockReturnValue({
+      data: [],
+    });
+
     render(<Details />);
 
     expect(screen.getByText("2025")).toBeInTheDocument();
@@ -220,6 +239,16 @@ describe("Details", () => {
         release_date: null,
       },
     });
+    (useGetMovieCreditsQuery as Mock).mockReturnValue({
+      data: {
+        id: 1,
+        cast: [],
+        crew: [],
+      },
+    });
+    (useGetRelatedMoviesQuery as Mock).mockReturnValue({
+      data: [],
+    });
 
     render(<Details />);
 
@@ -227,6 +256,20 @@ describe("Details", () => {
   });
 
   it("renders all tabs", () => {
+    (useGetMovieDetailsQuery as Mock).mockReturnValue({
+      data: mockMovie,
+    });
+    (useGetMovieCreditsQuery as Mock).mockReturnValue({
+      data: {
+        id: 1,
+        cast: [],
+        crew: [],
+      },
+    });
+    (useGetRelatedMoviesQuery as Mock).mockReturnValue({
+      data: [],
+    });
+
     render(<Details />);
 
     expect(screen.getByText("Cast & Crew")).toBeInTheDocument();
@@ -236,6 +279,20 @@ describe("Details", () => {
   });
 
   it("should render runtime in mins", () => {
+    (useGetMovieDetailsQuery as Mock).mockReturnValue({
+      data: mockMovie,
+    });
+    (useGetMovieCreditsQuery as Mock).mockReturnValue({
+      data: {
+        id: 1,
+        cast: [],
+        crew: [],
+      },
+    });
+    (useGetRelatedMoviesQuery as Mock).mockReturnValue({
+      data: [],
+    });
+
     render(<Details />);
 
     const icon = screen.getByTestId("FaRegClock");
@@ -274,6 +331,16 @@ describe("Details", () => {
         ],
         release_date: null,
       },
+    });
+    (useGetMovieCreditsQuery as Mock).mockReturnValue({
+      data: {
+        id: 1,
+        cast: [],
+        crew: [],
+      },
+    });
+    (useGetRelatedMoviesQuery as Mock).mockReturnValue({
+      data: [],
     });
 
     render(<Details />);

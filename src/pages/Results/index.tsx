@@ -30,7 +30,7 @@ export default function Results() {
   if (isLoading) return <Loading />;
   if (isError) return <div>Error:</div>;
 
-  if (isSuccess && !movies?.length) {
+  if (isSuccess && movies?.results?.length > 0) {
     return (
       <>
         <MainNav />

@@ -104,7 +104,7 @@ export const movies = [
   },
 ];
 
-const genres = [
+export const genres = [
   {
     id: 1,
     name: "Action",
@@ -127,7 +127,7 @@ const genres = [
   },
 ];
 
-const credits = {
+export const credits = {
   id: 1,
   cast: [
     {
