@@ -1,5 +1,5 @@
 import { render, screen } from "../utils/test-utils";
-import { describe, it, expect, type Mock } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import NotFound from "./NotFound";
 

@@ -49,7 +49,7 @@ export default function Details() {
   return (
     <>
       <MainNav />
-      <div className="movie-details relative h-screen overflow-hidden">
+      <div className="movie-details relative overflow-hidden h-[600px]">
         <div className="absolute inset-0 bottom-0 left-0 right-0">
           {movieDetails.backdrop_path && (
             <img
@@ -107,7 +107,7 @@ export default function Details() {
                     );
                   })}
                 </div>
-                <p className="text-xl text-slate-200 text-shadow-black text-shadow-sm leading-relaxed max-w-3xl mb-8">
+                <p className="text-xl text-slate-200 text-shadow-black text-shadow-sm leading-relaxed max-w-3xl mb-8 line-clamp-5">
                   {movieDetails.overview}
                 </p>
                 <div className="options flex flex-wrap gap-4">

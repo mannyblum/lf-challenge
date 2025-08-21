@@ -33,6 +33,7 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
   const handleGetMovieDetails = (movieId: number) => {
     dispatch(setSelectedMovieId(movieId));
     navigate("/details/" + movieId);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const cardHeight = related ? "min-h-[300px]" : "min-h-[500px]";
