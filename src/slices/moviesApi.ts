@@ -9,24 +9,44 @@ import {
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
 
-const baseQuery = fetchBaseQuery({
+export const createBaseQueryWithApiKey = (
+  baseQuery: ReturnType<typeof fetchBaseQuery>,
+  apiKey: string
+): BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> => {
+  return async (args, api, extraOptions) => {
+    let newArgs = args;
+    if (typeof newArgs === "string") {
+      newArgs = { url: newArgs };
+    }
+
+    const { url, ...rest } = newArgs;
+    const newUrl = `${url}${url.includes("?") ? "&" : "?"}api_key=${apiKey}`;
+
+    return baseQuery({ url: newUrl, ...rest }, api, extraOptions);
+  };
+};
+
+export const baseQuery = fetchBaseQuery({
   baseUrl: "https://api.themoviedb.org/3/",
 });
 
-const baseQueryWithApiKey: BaseQueryFn<
-  string | FetchArgs,
-  unknown,
-  FetchBaseQueryError
-> = async (args, api, extraOptions) => {
-  let newArgs = args;
-  if (typeof newArgs === "string") {
-    newArgs = { url: newArgs };
-  }
-  const { url, ...rest } = newArgs;
-  const newUrl = `${url}${url.includes("?") ? "&" : "?"}api_key=${API_KEY}`;
+const baseQueryWithApiKey = createBaseQueryWithApiKey(baseQuery, API_KEY);
 
-  return baseQuery({ url: newUrl, ...rest }, api, extraOptions);
-};
+// export const baseQueryWithApiKey: BaseQueryFn<
+//   string | FetchArgs,
+//   unknown,
+//   FetchBaseQueryError
+// > = async (args, api, extraOptions) => {
+//   let newArgs = args;
+//   if (typeof newArgs === "string") {
+//     newArgs = { url: newArgs };
+//   }
+//   console.log("newargs", newArgs);
+//   const { url, ...rest } = newArgs;
+//   const newUrl = `${url}${url.includes("?") ? "&" : "?"}api_key=${API_KEY}`;
+
+//   return baseQuery({ url: newUrl, ...rest }, api, extraOptions);
+// };
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
@@ -35,7 +55,7 @@ export const moviesApi = createApi({
     getMovies: build.query({
       query: (term: string) => `search/movie?query=${term}`,
     }),
-    getMovieDetails: build.query({
+    getMovieDetails: build.query<Movie, number>({
       query: (movieId: number) => `movie/${movieId}?language=en-US`,
     }),
     getMovieCredits: build.query({

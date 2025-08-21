@@ -90,10 +90,6 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                             const genreName =
                               getGenreName(genreId)?.name ?? null;
 
-                            console.log("genreId", genreId);
-                            console.log("genreName", genreName);
-                            console.log("getGenreName", getGenreName(genreId));
-
                             return (
                               <div
                                 key={genreId}

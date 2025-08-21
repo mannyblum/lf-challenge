@@ -34,6 +34,8 @@ export default function Details() {
   const { data: relatedMovies } = useGetRelatedMoviesQuery(movieId);
 
   const renderReleaseYear = (rd: string) => {
+    if (!rd) return null;
+
     const releaseDate = new Date(rd);
 
     return releaseDate.getFullYear();
@@ -82,7 +84,10 @@ export default function Details() {
                   </div>
                   {movieDetails.runtime ? (
                     <div className="flex items-center gap-4">
-                      <FaRegClock className="text-lg" />
+                      <FaRegClock
+                        data-testid="FaRegClock"
+                        className="text-lg"
+                      />
                       <p className="leading-[1.1] pt-0.5">
                         {movieDetails.runtime} min
                       </p>

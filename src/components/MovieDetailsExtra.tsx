@@ -32,6 +32,7 @@ export default function MovieDetailsExtra({
       const director = credits.crew.find(
         (member: CrewMember) => member.job === "Director"
       );
+
       const writers = credits.crew
         .filter((member: CrewMember) => member.job === "Screenplay")
         .map((writer: CrewMember) => writer.name);
@@ -61,6 +62,7 @@ export default function MovieDetailsExtra({
             {tabs.map((tab) => {
               return (
                 <button
+                  key={tab.id}
                   className={`active data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300 inline-flex flex-1 items-center justify-center gap=1.5 rounded-md border border-transparent px-2 py-1 font-medium`}
                   data-tab={tab.id}
                   data-state={activeTab === tab.id ? "active" : "inactive"}
@@ -152,7 +154,7 @@ export default function MovieDetailsExtra({
               <div className="cast mb-12">
                 <h2 className="text-3xl font-bold text-white mb-6">Cast</h2>
                 <div className="grid grid-cols-3 gap-6">
-                  {credits?.cast.slice(0, 9).map((actor: CastMember) => (
+                  {credits?.cast?.slice(0, 9).map((actor: CastMember) => (
                     <div
                       key={actor.id + "-" + actor.character}
                       className="flex flex-col shadow-sm rounded-xl bg-slate-800/30 border-slate-700/30"

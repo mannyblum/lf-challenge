@@ -8,10 +8,13 @@ export default function Browse() {
     isLoading,
     isSuccess,
     isError,
+    error,
   } = useGetPopularMoviesQuery();
 
-  if (isLoading) return <div>Loading</div>;
-  if (isError) return <div>Error:</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) {
+    return <div>Error: {JSON.stringify(error)}</div>;
+  }
 
   if (isSuccess && popularMovies.length > 0) {
     return (
