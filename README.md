@@ -21,7 +21,6 @@ VITE_TMDB_API_KEY=xxxxxx
   - Awards
   - Related Movies
 - Browse Page (Popular Movies)
-
   - list of 20 results
 
 - Responsive
@@ -57,3 +56,4 @@ VITE_TMDB_API_KEY=xxxxxx
 - Would have implemented skeleton style loading screen
 - Spent a little more time on tests
 - Smaller components
+- Implement Light/Dark Theme
