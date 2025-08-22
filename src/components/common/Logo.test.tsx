@@ -1,4 +1,4 @@
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../../utils/test-utils";
 import { describe, it, expect } from "vitest";
 import Logo from "./Logo";
 

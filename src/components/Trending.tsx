@@ -32,10 +32,11 @@ export default function Trending() {
         </h3>
       </div>
       <ul className="flex flex-row flex-wrap justify-center gap-4">
-        {topFive?.map((movie) => {
+        {topFive?.map((movie, index) => {
           return (
             <li
               key={movie.id}
+              tabIndex={index + 1}
               onClick={() => handleGetMovieDetails(movie.id)}
               className="px-4 py-2 bg-slate-800/30 hover:bg-slate-700/50 border border-slate-700/30 hover:border-slate-600/50 rounded-full text-slate-300 hover:text-white transition-all duration-200 hover:scale-105 backdrop-blur-sm"
             >

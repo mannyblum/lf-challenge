@@ -1,4 +1,4 @@
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../../utils/test-utils";
 import { describe, it, expect, vi } from "vitest";
 import MainNav from "./MainNav";
 import userEvent from "@testing-library/user-event";
