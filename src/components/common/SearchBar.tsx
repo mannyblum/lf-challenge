@@ -1,8 +1,10 @@
-import { useAppDispatch } from "@/hooks/rtk";
-import { useNavigate } from "react-router";
-import { setSearchTerm } from "@/slices/moviesSlice";
 import { useRef, useState, type ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router";
+
+import { useAppDispatch } from "@/hooks/rtk";
+
+import { setSearchTerm } from "@/slices/moviesSlice";
 
 interface SearchBarProps {
   size?: string;

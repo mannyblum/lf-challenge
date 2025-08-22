@@ -1,13 +1,4 @@
-import Loading from "@/components/Loading";
-import MainNav from "@/components/MainNav";
-import MovieDetailsExtra from "@/components/MovieDetailsExtra";
-import { useAppSelector } from "@/hooks/rtk";
-import {
-  useGetMovieCreditsQuery,
-  useGetMovieDetailsQuery,
-  useGetRelatedMoviesQuery,
-} from "@/slices/moviesApi";
-import type { Genre } from "@/types/movies";
+import { useParams } from "react-router";
 
 import { CiCalendar } from "react-icons/ci";
 import { FaRegClock, FaStar } from "react-icons/fa6";
@@ -18,7 +9,18 @@ import {
   IoShareOutline,
 } from "react-icons/io5";
 
-import { useParams } from "react-router";
+import { useAppSelector } from "@/hooks/rtk";
+import {
+  useGetMovieCreditsQuery,
+  useGetMovieDetailsQuery,
+  useGetRelatedMoviesQuery,
+} from "@/slices/moviesApi";
+
+import type { Genre } from "@/types/movies";
+
+import MovieDetailsExtra from "@/components/MovieDetailsExtra";
+import Loading from "@/components/common/Loading";
+import MainNav from "@/components/common/MainNav";
 
 export default function Details() {
   const params = useParams();

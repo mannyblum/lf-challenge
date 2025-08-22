@@ -9,8 +9,8 @@ import {
   useGetGenresQuery,
   useGetPopularMoviesQuery,
   useGetTrendingMoviesQuery,
-} from "./slices/moviesApi";
-import NotFound from "./components/NotFound";
+} from "@/slices/moviesApi";
+import NotFound from "@/components/common/NotFound";
 
 function App() {
   useGetGenresQuery();

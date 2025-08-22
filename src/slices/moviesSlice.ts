@@ -10,6 +10,8 @@ const initialState: MoviesState = {
   selectedMovieId: -1,
 };
 
+/* Movie Slice to keep track of 2 local elements - searchTerm and currently selected movie */
+
 const movieSlice = createSlice({
   name: "movies",
   initialState,

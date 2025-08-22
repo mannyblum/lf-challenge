@@ -1,11 +1,14 @@
-import MainNav from "@/components/MainNav";
-import { useAppSelector } from "@/hooks/rtk";
-import { useGetMoviesQuery } from "@/slices/moviesApi";
-import MoviesList from "@/components/MoviesList";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
-import Loading from "@/components/Loading";
-import NotFound from "@/components/NotFound";
+
+import { useAppSelector } from "@/hooks/rtk";
+
+import { useGetMoviesQuery } from "@/slices/moviesApi";
+
+import MoviesList from "@/components/MoviesList";
+import MainNav from "@/components/common/MainNav";
+import Loading from "@/components/common/Loading";
+import NotFound from "@/components/common/NotFound";
 
 export default function Results() {
   const navigate = useNavigate();

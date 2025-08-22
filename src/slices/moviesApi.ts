@@ -9,6 +9,8 @@ import {
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
 
+/* Base Query Setup to insert API_KEY at end of each request*/
+
 export const createBaseQueryWithApiKey = (
   baseQuery: ReturnType<typeof fetchBaseQuery>,
   apiKey: string
@@ -32,6 +34,7 @@ export const baseQuery = fetchBaseQuery({
 
 const baseQueryWithApiKey = createBaseQueryWithApiKey(baseQuery, API_KEY);
 
+/* Endpoints to be used within the app */
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
   baseQuery: baseQueryWithApiKey,

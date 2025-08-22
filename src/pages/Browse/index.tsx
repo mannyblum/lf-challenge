@@ -1,5 +1,6 @@
-import MainNav from "@/components/MainNav";
+import MainNav from "@/components/common/MainNav";
 import MoviesList from "@/components/MoviesList";
+
 import { useGetPopularMoviesQuery } from "@/slices/moviesApi";
 
 export default function Browse() {

@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router";
+
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
-import { useNavigate } from "react-router";
 
 export default function MainNav() {
   const navigate = useNavigate();

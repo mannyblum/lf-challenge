@@ -1,11 +1,12 @@
-import { store } from "@/app/store";
+import React, { type ReactElement } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router";
 import {
   render as tlrRender,
   type RenderOptions,
 } from "@testing-library/react";
-import React, { type ReactElement } from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router";
+
+import { store } from "@/app/store";
 
 const AllProviders = ({ children }: { children: React.ReactNode }) => {
   return (
