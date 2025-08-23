@@ -57,6 +57,7 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
             data-slot="card"
             onClick={() => handleGetMovieDetails(movie.id)}
             className={classNames}
+            tabIndex={0}
           >
             <div data-slot="card-content h-full">
               <div className="relative h-full">
