@@ -9,7 +9,7 @@ export function TabPanels({ children }: TabPanelsProps) {
 
 export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
   ({ index, children, trapFocus = false }, ref) => {
-    const { selectedTab, tabButtonRefs } = useTabsContext();
+    const { selectedTab, tabButtonRefs, setLastEscapeIndex } = useTabsContext();
     const panelRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -31,6 +31,7 @@ export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
         if (tb) {
           e.preventDefault();
           tb.focus();
+          setLastEscapeIndex(index);
         }
       }
     };

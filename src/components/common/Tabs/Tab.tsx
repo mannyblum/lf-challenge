@@ -16,11 +16,18 @@ export function TabList({ children }: TabListProps) {
 
 export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
   ({ index, children }, ref) => {
+    const { lastEscapeIndex, setLastEscapeIndex } = useTabsContext();
+
     const handleKeyDown = (
       e: React.KeyboardEvent<HTMLButtonElement>,
       index: number
     ) => {
       if (e.key === "Tab" && !e.shiftKey && selectedTab === index) {
+        if (lastEscapeIndex === index) {
+          setLastEscapeIndex(null);
+          return;
+        }
+
         const panel = document.getElementById(`panel-${index}`);
         if (panel) {
           const focusable = panel.querySelector<HTMLElement>(

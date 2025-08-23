@@ -4,8 +4,8 @@ interface TabsContextProps {
   selectedTab: number;
   setSelectedTab: (idx: number) => void;
   tabButtonRefs: React.RefObject<(HTMLButtonElement | null)[]>;
-  // lastEscapeIndex: number;
-  // setLastEscapeIndex: (idx: number) => void;
+  lastEscapeIndex: number | null;
+  setLastEscapeIndex: (idx: number | null) => void;
 }
 
 export const TabsContext = createContext<TabsContextProps | null>(null);
