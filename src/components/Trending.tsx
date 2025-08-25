@@ -18,7 +18,7 @@ export default function Trending() {
 
   const handleGetMovieDetails = (movieId: number) => {
     dispatch(setSelectedMovieId(movieId));
-    navigate("/details/" + movieId);
+    navigate("details/" + movieId);
   };
 
   if (!isSuccess) return;

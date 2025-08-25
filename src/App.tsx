@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { MemoryRouter, Route, Routes } from "react-router";
 
 import Home from "./pages/Home";
 import Results from "./pages/Results";
@@ -18,13 +18,15 @@ function App() {
   useGetTrendingMoviesQuery();
 
   return (
-    <Routes>
-      <Route path="/" index element={<Home />} />
-      <Route path="results/:term" element={<Results />} />
-      <Route path="browse" element={<Browse />} />
-      <Route path="details/:movieId" element={<Details />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route path="/" index element={<Home />} />
+        <Route path="results/:term" element={<Results />} />
+        <Route path="browse" element={<Browse />} />
+        <Route path="details/:movieId" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </MemoryRouter>
   );
 }
 
