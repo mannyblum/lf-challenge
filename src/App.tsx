@@ -1,16 +1,16 @@
 import { Route, Routes } from "react-router";
 
-import Home from "@pages/Home";
-import Results from "@/pages/Results";
-import Browse from "@/pages/Browse";
-import Details from "@/pages/Details";
+import Home from "./pages/Home";
+import Results from "./pages/Results";
+import Browse from "./pages/Browse";
+import Details from "./pages/Details";
 
 import {
   useGetGenresQuery,
   useGetPopularMoviesQuery,
   useGetTrendingMoviesQuery,
-} from "@/slices/moviesApi";
-import NotFound from "@/components/common/NotFound";
+} from "./slices/moviesApi";
+import NotFound from "./components/common/NotFound";
 
 function App() {
   useGetGenresQuery();

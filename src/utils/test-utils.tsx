@@ -6,7 +6,7 @@ import {
   type RenderOptions,
 } from "@testing-library/react";
 
-import { store } from "@/app/store";
+import { store } from "../app/store";
 
 const AllProviders = ({ children }: { children: React.ReactNode }) => {
   return (

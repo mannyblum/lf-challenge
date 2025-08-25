@@ -1,6 +1,6 @@
-import Trending from "@/components/Trending";
-import MainHeader from "@components/common/MainHeader";
-import SearchBar from "@/components/common/SearchBar";
+import Trending from "../../components/Trending";
+import MainHeader from "../../components/common/MainHeader";
+import SearchBar from "../../components/common/SearchBar";
 
 export default function Home() {
   return (

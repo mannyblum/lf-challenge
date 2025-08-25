@@ -1,4 +1,4 @@
-import type { Genre, Movie, Credits } from "@/types/movies";
+import type { Genre, Movie, Credits } from "../types/movies";
 import {
   createApi,
   fetchBaseQuery,

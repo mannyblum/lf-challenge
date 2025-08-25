@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaRegThumbsDown } from "react-icons/fa6";
 
-import MoviesList from "@/components/MoviesList";
+import MoviesList from "../components/MoviesList";
 
 import type {
   Movie,
@@ -9,7 +9,7 @@ import type {
   CrewMember,
   Credits,
   CastMember,
-} from "@/types/movies";
+} from "../types/movies";
 import { Tab, TabPanels, TabList, TabPanel, Tabs } from "./common/Tabs";
 
 interface MovieDetailsExtraProps {

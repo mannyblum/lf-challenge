@@ -2,12 +2,12 @@ import { CiCalendar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 
-import { useAppDispatch } from "@/hooks/rtk";
+import { useAppDispatch } from "../hooks/rtk";
 
-import { useGetGenresQuery } from "@/slices/moviesApi";
-import { setSelectedMovieId } from "@/slices/moviesSlice";
+import { useGetGenresQuery } from "../slices/moviesApi";
+import { setSelectedMovieId } from "../slices/moviesSlice";
 
-import type { Movie } from "@/types/movies";
+import type { Movie } from "../types/movies";
 
 interface MoviesListProps {
   movies: Movie[];

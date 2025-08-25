@@ -1,8 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { Tab, TabList } from "./Tab";
-import { fireEvent, render, screen } from "@/utils/test-utils";
-import { Tabs } from "./Tabs";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "../../../utils/test-utils";
 import { TabsProvider, useTabsContext } from "./context";
 import { TabPanel, TabPanels } from "./TabPanel";
 

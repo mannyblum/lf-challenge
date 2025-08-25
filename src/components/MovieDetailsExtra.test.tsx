@@ -8,7 +8,7 @@ import {
 import { describe, it, expect } from "vitest";
 
 import MovieDetailsExtra from "./MovieDetailsExtra";
-import type { Credits, Movie } from "@/types/movies";
+import type { Credits, Movie } from "../types/movies";
 
 const movieDetails: Movie = {
   id: 2,

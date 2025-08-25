@@ -5,12 +5,14 @@ import {
   useGetMovieDetailsQuery,
   useGetMovieCreditsQuery,
   useGetRelatedMoviesQuery,
-} from "@/slices/moviesApi";
-import { useAppSelector } from "@/hooks/rtk";
+} from "../../slices/moviesApi";
+import { useAppSelector } from "../../hooks/rtk";
 import { useParams } from "react-router";
 
-vi.mock("@/slices/moviesApi", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/slices/moviesApi")>();
+vi.mock("../../slices/moviesApi", async (importOriginal) => {
+  const actual = await importOriginal<
+    typeof import("../../slices/moviesApi")
+  >();
   return {
     ...actual,
     useGetMovieDetailsQuery: vi.fn(),
@@ -31,8 +33,8 @@ vi.mock("react-router", async () => {
   };
 });
 
-vi.mock("@/hooks/rtk", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/hooks/rtk")>();
+vi.mock("../../hooks/rtk", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("../../hooks/rtk")>();
   return {
     ...actual,
     useAppSelector: vi.fn(),

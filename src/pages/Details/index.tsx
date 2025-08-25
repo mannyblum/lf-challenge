@@ -9,18 +9,18 @@ import {
   IoShareOutline,
 } from "react-icons/io5";
 
-import { useAppSelector } from "@/hooks/rtk";
+import { useAppSelector } from "../../hooks/rtk";
 import {
   useGetMovieCreditsQuery,
   useGetMovieDetailsQuery,
   useGetRelatedMoviesQuery,
-} from "@/slices/moviesApi";
+} from "../../slices/moviesApi";
 
-import type { Genre } from "@/types/movies";
+import type { Genre } from "../../types/movies";
 
-import MovieDetailsExtra from "@/components/MovieDetailsExtra";
-import Loading from "@/components/common/Loading";
-import MainNav from "@/components/common/MainNav";
+import MovieDetailsExtra from "../../components/MovieDetailsExtra";
+import Loading from "../../components/common/Loading";
+import MainNav from "../../components/common/MainNav";
 import { useEffect } from "react";
 
 export default function Details() {

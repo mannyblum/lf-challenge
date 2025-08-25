@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 import { FiTrendingUp } from "react-icons/fi";
 
-import { useAppDispatch } from "@/hooks/rtk";
+import { useAppDispatch } from "../hooks/rtk";
 
-import { useGetTrendingMoviesQuery } from "@/slices/moviesApi";
-import { setSelectedMovieId } from "@/slices/moviesSlice";
+import { useGetTrendingMoviesQuery } from "../slices/moviesApi";
+import { setSelectedMovieId } from "../slices/moviesSlice";
 
 export default function Trending() {
   // TODO: implement loading

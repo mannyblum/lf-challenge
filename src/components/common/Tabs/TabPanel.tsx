@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import type { TabPanelProps, TabPanelsProps } from "./types";
 import { useTabsContext } from "./context";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { useFocusTrap } from "../../../hooks/useFocusTrap";
 
 export function TabPanels({ children }: TabPanelsProps) {
   return <div>{children}</div>;

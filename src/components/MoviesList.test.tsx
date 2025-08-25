@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "../utils/test-utils";
 import { describe, it, expect, vi } from "vitest";
 import MoviesList from "./MoviesList";
-import type { Movie } from "@/types/movies";
+import type { Movie } from "../types/movies";
 
 const mockedUseNavigate = vi.fn();
 vi.mock("react-router", async () => {
