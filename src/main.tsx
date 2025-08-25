@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter basename="kaosmovies">
+    <BrowserRouter basename="/movies">
       <MoviesApp />
     </BrowserRouter>
   </StrictMode>

@@ -19,10 +19,10 @@ function App() {
 
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path="results/:term" element={<Results />} />
-      <Route path="browse" element={<Browse />} />
-      <Route path="details/:movieId" element={<Details />} />
+      <Route index path="/" element={<Home />} />
+      <Route path="/results/:term" element={<Results />} />
+      <Route path="/browse" element={<Browse />} />
+      <Route path="/details/:movieId" element={<Details />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
