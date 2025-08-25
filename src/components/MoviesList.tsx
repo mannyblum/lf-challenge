@@ -35,7 +35,6 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
   const handleGetMovieDetails = (movieId: number) => {
     dispatch(setSelectedMovieId(movieId));
     navigate("/details/" + movieId);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const cardHeight = related ? "min-h-[300px]" : "min-h-[500px]";
@@ -94,7 +93,7 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                     {!related && (
                       <>
                         <div className="flex flex-row flex-wrap gap-2 mb-2">
-                          {movie.genre_ids.map((genreId) => {
+                          {movie.genre_ids?.map((genreId) => {
                             const genreName =
                               getGenreName(genreId)?.name ?? null;
 

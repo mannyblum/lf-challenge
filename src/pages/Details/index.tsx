@@ -21,6 +21,7 @@ import type { Genre } from "@/types/movies";
 import MovieDetailsExtra from "@/components/MovieDetailsExtra";
 import Loading from "@/components/common/Loading";
 import MainNav from "@/components/common/MainNav";
+import { useEffect } from "react";
 
 export default function Details() {
   const params = useParams();
@@ -35,6 +36,10 @@ export default function Details() {
   const { data: movieDetails } = useGetMovieDetailsQuery(movieId);
   const { data: credits } = useGetMovieCreditsQuery(movieId);
   const { data: relatedMovies } = useGetRelatedMoviesQuery(movieId);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const renderReleaseYear = (rd: string) => {
     if (!rd) return null;

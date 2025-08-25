@@ -140,16 +140,19 @@ export default function MovieDetailsExtra({
                     <div className="flex justify-between gap-6 border-b border-slate-700/30 py-2">
                       <span className="text-slate-400">Budget</span>
                       <span className="text-white text-right">
-                        ${movieDetails.budget.toLocaleString("en-US")}
+                        ${movieDetails.budget?.toLocaleString("en-US")}
                       </span>
                     </div>
                     <div className="flex justify-between gap-6 border-b border-slate-700/30 py-2">
                       <span className="text-slate-400">Revenue</span>
                       <span className="text-white text-right">
-                        ${movieDetails.revenue.toLocaleString("en-US")}
+                        ${movieDetails.revenue?.toLocaleString("en-US")}
                       </span>
                     </div>
-                    <div className="flex justify-between gap-6 border-b border-slate-700/30 py-2">
+                    <div
+                      data-testid="languages"
+                      className="flex justify-between gap-6 border-b border-slate-700/30 py-2"
+                    >
                       <span className="text-slate-400">Languages</span>
                       <span className="text-white text-right">
                         {languages?.join(", ")}

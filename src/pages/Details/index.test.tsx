@@ -46,6 +46,7 @@ const mockMovie = {
   backdrop_path: "/path/to/backdrop.jpg",
   title: "Robin Hood",
   budget: 1000000,
+  revenue: 400000,
   runtime: 90,
   genre_ids: [1, 2, 3],
   genres: [
@@ -150,6 +151,7 @@ describe("Details", () => {
         backdrop_path: "/path/to/backdrop.jpg",
         title: "Robin Hood",
         budget: 1000000,
+        revenue: 400000,
         runtime: 90,
         genre_ids: [1, 2, 3],
         genres: [
@@ -252,10 +254,10 @@ describe("Details", () => {
 
     render(<Details />);
 
-    expect(screen.getByText("Unknown")).toBeInTheDocument();
+    expect(screen.queryByText("Unknown")).toBeInTheDocument();
   });
 
-  it("renders all tabs", () => {
+  it("renders all tabs", async () => {
     (useGetMovieDetailsQuery as Mock).mockReturnValue({
       data: mockMovie,
     });
@@ -272,10 +274,10 @@ describe("Details", () => {
 
     render(<Details />);
 
-    expect(screen.getByText("Cast & Crew")).toBeInTheDocument();
-    expect(screen.getByText("Details")).toBeInTheDocument();
-    expect(screen.getByText("Awards")).toBeInTheDocument();
-    expect(screen.getByText("Related")).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: /Cast and Crew/i }));
+    expect(screen.getByRole("tab", { name: /Details/i }));
+    expect(screen.getByRole("tab", { name: /Awards/i }));
+    expect(screen.getByRole("tab", { name: /Related/i }));
   });
 
   it("should render runtime in mins", () => {

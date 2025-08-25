@@ -58,10 +58,11 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         <button
           ref={(el) => tabRefs(el)}
           role="tab"
+          id={`tab-${index}`}
           aria-selected={selectedTab === index}
-          arian-controls={`panel-${index}`}
+          aria-controls={`panel-${index}`}
           key={`panel-${index}`}
-          className={`active hover:bg-purple-100/20 data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300 text-sm lg:text-lg inline-flex flex-1 items-center justify-center gap=1.5 rounded-md border border-transparent px-2 py-1 font-medium`}
+          className={`hover:bg-purple-100/20 data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300 text-sm lg:text-lg inline-flex flex-1 items-center justify-center gap=1.5 rounded-md border border-transparent px-2 py-1 font-medium`}
           data-state={selectedTab === index ? "active" : "inactive"}
           onClick={() => {
             setSelectedTab(index);

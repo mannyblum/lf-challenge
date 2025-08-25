@@ -117,10 +117,10 @@ describe("MovieDetailsExtra Component", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/Cast & Crew/i)).toBeDefined();
-      expect(screen.getByText(/Details/i)).toBeDefined();
-      expect(screen.getByText(/Awards/i)).toBeDefined();
-      expect(screen.getByText(/Related/i)).toBeDefined();
+      expect(screen.getByRole("tab", { name: /Cast and Crew/i })).toBeDefined();
+      expect(screen.getByRole("tab", { name: /Details/i })).toBeDefined();
+      expect(screen.getByRole("tab", { name: /Awards/i })).toBeDefined();
+      expect(screen.getByRole("tab", { name: /Related/i })).toBeDefined();
     });
   });
 
@@ -133,11 +133,10 @@ describe("MovieDetailsExtra Component", () => {
       />
     );
     await waitFor(() => {
-      expect(screen.getByText("Cast & Crew")).toHaveAttribute(
-        "data-state",
-        "active"
-      );
-      expect(screen.getByText("Details")).toHaveAttribute(
+      expect(
+        screen.getByRole("tab", { name: /Cast and Crew/i })
+      ).toHaveAttribute("data-state", "active");
+      expect(screen.getByRole("tab", { name: /Details/i })).toHaveAttribute(
         "data-state",
         "inactive"
       );
@@ -152,13 +151,13 @@ describe("MovieDetailsExtra Component", () => {
         relatedMovies={relatedMovies}
       />
     );
-    const relatedMoviesBtn = screen.getByText(/Related/i);
+    const relatedMoviesBtn = screen.getByRole("tab", { name: /Related/i });
 
     // click second tab
     fireEvent.click(relatedMoviesBtn);
 
     expect(relatedMoviesBtn).toHaveAttribute("data-state", "active");
-    expect(screen.getByText(/Cast & Crew/i)).toHaveAttribute(
+    expect(screen.getByRole("tab", { name: /Details/i })).toHaveAttribute(
       "data-state",
       "inactive"
     );
@@ -172,13 +171,13 @@ describe("MovieDetailsExtra Component", () => {
         relatedMovies={relatedMovies}
       />
     );
-    const awardsBtn = screen.getByText(/Awards/i);
+    const awardsBtn = screen.getByRole("tab", { name: /Awards/i });
 
     // click second tab
     fireEvent.click(awardsBtn);
 
     expect(awardsBtn).toHaveAttribute("data-state", "active");
-    expect(screen.getByText(/Cast & Crew/i)).toHaveAttribute(
+    expect(screen.getByRole("tab", { name: /Cast and Crew/i })).toHaveAttribute(
       "data-state",
       "inactive"
     );
@@ -203,7 +202,7 @@ describe("MovieDetailsExtra Component", () => {
       />
     );
 
-    const detailsBtn = screen.getByText("Details");
+    const detailsBtn = screen.getByRole("tab", { name: /Details/i });
     fireEvent.click(detailsBtn);
 
     expect(detailsBtn).toHaveAttribute("data-state", "active");
@@ -228,14 +227,23 @@ describe("MovieDetailsExtra Component", () => {
       />
     );
 
-    const detailsBtn = screen.getByText("Details");
+    const detailsBtn = screen.getByRole("tab", { name: /Details/i });
     fireEvent.click(detailsBtn);
 
     expect(detailsBtn).toHaveAttribute("data-state", "active");
 
-    expect(screen.getByText(/Mel Brooks/i)).toBeInTheDocument();
-    expect(screen.getByText(/Thomas Meehan, Ronny Graham/)).toBeInTheDocument();
-    expect(screen.getByText(/English, Spanish/)).toBeInTheDocument();
+    // (screen.getByTestId("writers")).queryByText(/Ezra Swerdlow/i)
+    expect(
+      within(screen.getByTestId("director")).queryByText(/Mel Brooks/i)
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByTestId("writers")).queryByText(
+        /Thomas Meehan, Ronny Graham/
+      )
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByTestId("languages")).queryByText(/English, Spanish/)
+    ).toBeInTheDocument();
   });
 
   it("handles missing director in crew", () => {
@@ -247,7 +255,7 @@ describe("MovieDetailsExtra Component", () => {
       />
     );
 
-    const detailsBtn = screen.getByText("Details");
+    const detailsBtn = screen.getByRole("tab", { name: /Details/i });
     fireEvent.click(detailsBtn);
 
     expect(detailsBtn).toHaveAttribute("data-state", "active");
