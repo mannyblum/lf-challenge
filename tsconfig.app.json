@@ -32,7 +32,8 @@
       "@slices/*": ["src/slices/*"],
       "@hooks/*": ["src/hooks/*"],
       "@types/*": ["src/types/*"],
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "movies": ["../movies/src"]
     },
 
     "types": ["vitest/globals"]

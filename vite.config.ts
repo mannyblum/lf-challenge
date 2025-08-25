@@ -18,4 +18,16 @@ export default defineConfig({
       "@slices": path.resolve(__dirname, "./src/slices"),
     },
   },
+  build: {
+    outDir: "dist",
+    lib: {
+      entry: path.resolve(__dirname, "src/index.tsx"),
+      name: "Movies",
+      fileName: () => "movies.js",
+      formats: ["es"],
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+    },
+  },
 });
