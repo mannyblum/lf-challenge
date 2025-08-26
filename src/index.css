@@ -19,3 +19,7 @@
 #root.movies {
   background-color: #050a1b;
 }
+
+[role="main"] {
+  background-color: #050a1b;
+}
