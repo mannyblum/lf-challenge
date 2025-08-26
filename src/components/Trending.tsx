@@ -1,24 +1,27 @@
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { FiTrendingUp } from "react-icons/fi";
 
 import { useAppDispatch } from "../hooks/rtk";
 
 import { useGetTrendingMoviesQuery } from "../slices/moviesApi";
 import { setSelectedMovieId } from "../slices/moviesSlice";
+import { useLocation } from "wouter";
 
 export default function Trending() {
   // TODO: implement loading
   const { data, isSuccess } = useGetTrendingMoviesQuery();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [_, navigate] = useLocation();
   const dispatch = useAppDispatch();
 
   const trendingMovies = data || [];
   const topFive = trendingMovies.slice(0, 5);
 
   const handleGetMovieDetails = (movieId: number) => {
+    console.log("getmovie", movieId);
     dispatch(setSelectedMovieId(movieId));
-    navigate("details/" + movieId);
+    navigate("/details/" + movieId);
   };
 
   if (!isSuccess) return;

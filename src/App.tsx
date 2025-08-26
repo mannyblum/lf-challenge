@@ -1,4 +1,6 @@
-import { MemoryRouter, Route, Routes } from "react-router";
+// import { MemoryRouter, Route, Routes } from "react-router";
+import { Route, Router, Switch } from "wouter";
+import { memoryLocation } from "wouter/memory-location";
 
 import Home from "./pages/Home";
 import Results from "./pages/Results";
@@ -17,17 +19,34 @@ function App() {
   useGetPopularMoviesQuery();
   useGetTrendingMoviesQuery();
 
+  const { hook } = memoryLocation({
+    path: "/",
+    record: true,
+  });
+
   return (
-    <MemoryRouter initialEntries={["/"]}>
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="results/:term" element={<Results />} />
-        <Route path="browse" element={<Browse />} />
-        <Route path="details/:movieId" element={<Details />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </MemoryRouter>
+    <Router hook={hook}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="results/:term" component={Results} />
+        <Route path="browse" component={Browse} />
+        <Route path="details/:movieId" component={Details} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
   );
+
+  // return (
+  //   <MemoryRouter initialEntries={["/"]}>
+  //     <Routes>
+  //       <Route path="/" index element={<Home />} />
+  //       <Route path="results/:term" element={<Results />} />
+  //       <Route path="browse" element={<Browse />} />
+  //       <Route path="details/:movieId" element={<Details />} />
+  //       <Route path="*" element={<NotFound />} />
+  //     </Routes>
+  //   </MemoryRouter>
+  // );
 }
 
 export default App;

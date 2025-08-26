@@ -1,4 +1,6 @@
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
+import { useEffect } from "react";
+import { useParams } from "wouter";
 
 import { CiCalendar } from "react-icons/ci";
 import { FaRegClock, FaStar } from "react-icons/fa6";
@@ -21,7 +23,6 @@ import type { Genre } from "../../types/movies";
 import MovieDetailsExtra from "../../components/MovieDetailsExtra";
 import Loading from "../../components/common/Loading";
 import MainNav from "../../components/common/MainNav";
-import { useEffect } from "react";
 
 export default function Details() {
   const params = useParams();

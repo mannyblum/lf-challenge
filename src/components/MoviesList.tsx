@@ -1,6 +1,7 @@
 import { CiCalendar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
+import { useLocation } from "wouter";
 
 import { useAppDispatch } from "../hooks/rtk";
 
@@ -15,7 +16,8 @@ interface MoviesListProps {
 }
 
 export default function MoviesList({ movies, related }: MoviesListProps) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [_, navigate] = useLocation();
 
   const dispatch = useAppDispatch();
   const { data: genres } = useGetGenresQuery();
