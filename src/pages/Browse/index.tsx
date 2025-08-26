@@ -19,7 +19,7 @@ export default function Browse() {
 
   if (isSuccess && popularMovies.length > 0) {
     return (
-      <>
+      <div className="flex flex-col">
         <MainNav />
         <div role="main" className="container mx-auto px-4 py-8">
           <div className="my-8">
@@ -32,7 +32,7 @@ export default function Browse() {
           </div>
           <MoviesList movies={popularMovies} />
         </div>
-      </>
+      </div>
     );
   }
 }

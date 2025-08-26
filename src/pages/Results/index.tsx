@@ -38,7 +38,7 @@ export default function Results() {
 
   if (isSuccess && movies?.results?.length > 0) {
     return (
-      <>
+      <div className="flex flex-col">
         <MainNav />
         <div role="main" className="container mx-auto px-4">
           <div className="my-8">
@@ -55,7 +55,7 @@ export default function Results() {
             <NotFound />
           )}
         </div>
-      </>
+      </div>
     );
   }
 }

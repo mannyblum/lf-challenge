@@ -55,7 +55,7 @@ export default function Details() {
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <MainNav />
       <div className="movie-details relative overflow-hidden h-[600px]">
         <div className="absolute inset-0 bottom-0 left-0 right-0">
@@ -147,6 +147,6 @@ export default function Details() {
         credits={credits}
         relatedMovies={relatedMovies}
       />
-    </>
+    </div>
   );
 }
