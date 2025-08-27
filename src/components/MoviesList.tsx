@@ -54,6 +54,7 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
           <div
             key={movie.id}
             data-slot="card"
+            role="button"
             onClick={() => handleGetMovieDetails(movie.id)}
             className={classNames}
             tabIndex={0}

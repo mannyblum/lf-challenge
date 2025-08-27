@@ -1,16 +1,13 @@
 import { FaFilm } from "react-icons/fa6";
+import { Link } from "wouter";
 
 interface LogoProps {
   size?: string;
-  onClick?: () => void;
 }
 
-export default function Logo({ size, onClick }: LogoProps) {
+export default function Logo({ size }: LogoProps) {
   return (
-    <div
-      className="flex flex-row items-center justify-center"
-      onClick={onClick}
-    >
+    <Link to="/" className="flex flex-row items-center justify-center">
       <div
         className={`${
           size === "small" ? "p-2 mr-2" : "p-3 mr-4"
@@ -31,6 +28,6 @@ export default function Logo({ size, onClick }: LogoProps) {
       >
         MovieKaos
       </h1>
-    </div>
+    </Link>
   );
 }
