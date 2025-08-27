@@ -15,7 +15,7 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
   const [localTerm, setLocalTerm] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [_, navigate] = useLocation();
+  const [, navigate] = useLocation();
   const dispatch = useAppDispatch();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +49,7 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
             size === "small" ? "p-0.5" : "p-2"
           } relative rounded-lg backdrop-blur-sm flex items-center  !bg-slate-800/50 border border-slate-700/50`}
         >
-          <div>
+          <div aria-label="Search Movies">
             <FaSearch
               className={`text-slate-400 ${
                 size === "small" ? "text-md ml-2 mr-1" : "text-2xl ml-4 mr-2"

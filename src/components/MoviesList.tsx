@@ -15,7 +15,7 @@ interface MoviesListProps {
 }
 
 export default function MoviesList({ movies, related }: MoviesListProps) {
-  const [_, navigate] = useLocation();
+  const [, navigate] = useLocation();
 
   const dispatch = useAppDispatch();
   const { data: genres } = useGetGenresQuery();
@@ -61,7 +61,10 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
           >
             <div data-slot="card-content h-full">
               <div className="relative h-full">
-                <div className="absolute top-3 right-3 text-green-400 bg-black/70 px-2 py-1 rounded-full flex items-center gap-1.5">
+                <div
+                  aria-label="Average User Rating"
+                  className="absolute top-3 right-3 text-green-400 bg-black/70 px-2 py-1 rounded-full flex items-center gap-1.5"
+                >
                   <FaStar />
                   <span className="text-sm font-semibold py-0.5 leading-[1]">
                     {movie.vote_average?.toFixed(1)}

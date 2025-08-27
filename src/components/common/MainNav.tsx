@@ -1,10 +1,8 @@
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 export default function MainNav() {
-  const [_, navigate] = useLocation();
-
   return (
     <nav className="sticky w-full top-0 z-50 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
       <div className="container mx-auto lg:py-3 px-4 py-4">

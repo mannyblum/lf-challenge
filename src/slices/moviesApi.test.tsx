@@ -11,7 +11,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 import { createBaseQueryWithApiKey, moviesApi } from "./moviesApi"; // adjust import path
-import type { FetchArgs } from "@reduxjs/toolkit/query/react";
+import type { FetchArgs, BaseQueryApi } from "@reduxjs/toolkit/query";
 
 // Mock the original fetchBaseQuery so we can inspect calls
 vi.mock("@reduxjs/toolkit/query/react", async () => {
@@ -339,7 +339,7 @@ describe("moviesApi", () => {
     const wrapped = createBaseQueryWithApiKey(mockBaseQuery, fakeApiKey);
 
     const args: FetchArgs = { url: "movie/popular" };
-    await wrapped(args, {} as any, {} as any);
+    await wrapped(args, {} as BaseQueryApi, {} as Record<string, unknown>);
 
     expect(mockBaseQuery).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -356,7 +356,7 @@ describe("moviesApi", () => {
     const wrapped = createBaseQueryWithApiKey(mockBaseQuery, fakeApiKey);
 
     const args: FetchArgs = { url: "search/movie?query=batman" };
-    await wrapped(args, {} as any, {} as any);
+    await wrapped(args, {} as BaseQueryApi, {} as Record<string, unknown>);
 
     expect(mockBaseQuery).toHaveBeenCalledWith(
       expect.objectContaining({

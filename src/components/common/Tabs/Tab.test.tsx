@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { Tab, TabList } from "./Tab";
 import { fireEvent, render, screen } from "../../../utils/test-utils";
-import { TabsProvider, useTabsContext } from "./context";
+import { TabsProvider } from "./context";
 import { TabPanel, TabPanels } from "./TabPanel";
 
 describe("Tab", () => {
-  const renderWithContext = (selectedTab = 0, index = 0) => {
+  const renderWithContext = (index = 0) => {
     return render(
       <TabsProvider>
         <TabList>

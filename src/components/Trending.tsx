@@ -10,8 +10,7 @@ export default function Trending() {
   // TODO: implement loading
   const { data, isSuccess } = useGetTrendingMoviesQuery();
 
-  // const navigate = useNavigate();
-  const [_, navigate] = useLocation();
+  const [, navigate] = useLocation();
   const dispatch = useAppDispatch();
 
   const trendingMovies = data || [];
@@ -26,7 +25,10 @@ export default function Trending() {
 
   return (
     <div className="flex flex-col justify-center mx-16">
-      <div className="flex items-center justify-center gap-4 mb-6">
+      <div
+        aria-label="Trending Now"
+        className="flex items-center justify-center gap-4 mb-6"
+      >
         <FiTrendingUp className="text-purple-400 h-5 w-5 font-semibold" />
         <h3 className="sm:text-lg text-2xl font-semibold text-slate-300">
           Trending Now

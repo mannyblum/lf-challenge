@@ -1,6 +1,6 @@
 import React from "react";
 import type { TabListProps, TabProps } from "./types";
-import { useTabsContext } from "./context";
+import { useTabsContext } from "./useTabsContext";
 
 export function TabList({ children }: TabListProps) {
   return (

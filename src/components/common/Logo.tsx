@@ -9,6 +9,7 @@ export default function Logo({ size }: LogoProps) {
   return (
     <Link to="/" className="flex flex-row items-center justify-center">
       <div
+        aria-label="MovieKaos Logo"
         className={`${
           size === "small" ? "p-2 mr-2" : "p-3 mr-4"
         } rounded-xl bg-gradient-to-r from-purple-400 to-pink-400 text-white`}

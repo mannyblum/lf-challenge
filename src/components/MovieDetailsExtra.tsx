@@ -168,7 +168,10 @@ export default function MovieDetailsExtra({
                   Awards & Recognition
                 </h2>
                 <div className="grid grid-cols-1 gap-6">
-                  <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-lg p-6 text-center">
+                  <div
+                    aria-label="No Awards Found Message"
+                    className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-lg p-6 text-center"
+                  >
                     <FaRegThumbsDown className="w-8 h-8 text-yellow-400 mx-auto mb-3" />
 
                     <h4 className="font-semibold text-white">

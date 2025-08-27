@@ -78,13 +78,19 @@ export default function Details() {
                     {movieDetails.original_title}
                   </h1>
                   <div className="text-lg text-shadow-black text-shadow-md flex flex-wrap gap-4 items-center text-slate-300 mb-2">
-                    <div className="text-green-400 px-2 py-1 rounded-full flex items-center gap-2">
+                    <div
+                      aria-label="Average User Rating"
+                      className="text-green-400 px-2 py-1 rounded-full flex items-center gap-2"
+                    >
                       <FaStar className="text-lg" />
                       <span className="font-semibold py-0.5 leading-[1]">
                         {movieDetails.vote_average}
                       </span>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div
+                      aria-label="Release Year"
+                      className="flex items-center gap-4"
+                    >
                       <CiCalendar className="text-lg" />
                       <p className="leading-[1.1] pt-0.5">
                         {renderReleaseYear(movieDetails.release_date) ||
@@ -92,7 +98,10 @@ export default function Details() {
                       </p>
                     </div>
                     {movieDetails.runtime ? (
-                      <div className="flex items-center gap-4">
+                      <div
+                        className="flex items-center gap-4"
+                        aria-label="Movie Runtime"
+                      >
                         <FaRegClock
                           data-testid="FaRegClock"
                           className="text-lg"
@@ -119,19 +128,31 @@ export default function Details() {
                     {movieDetails.overview}
                   </p>
                   <div className="options flex flex-wrap gap-4">
-                    <button className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-xs hover:bg-black/90 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-black/90">
+                    <button
+                      aria-label="Watch Trailer"
+                      className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-xs hover:bg-black/90 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-black/90"
+                    >
                       <IoPlayOutline />
                       <span>Watch Trailer</span>
                     </button>
-                    <button className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white">
+                    <button
+                      aria-label="Add to Favorites"
+                      className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white"
+                    >
                       <IoHeartOutline />
                       <span>Add to Favorites</span>
                     </button>
-                    <button className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white">
+                    <button
+                      aria-label="Add to Watchlist"
+                      className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white"
+                    >
                       <IoBookmarkOutline />
                       <span>Add to Watchlist</span>
                     </button>
-                    <button className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white">
+                    <button
+                      aria-label="Search"
+                      className="button inline-flex items-center justify-center gap-4 whitespace-nowrap font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-[#0a0a0a] shadow-xs hover:bg-[#262626] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 border-slate-600 text-slate-300 hover:text-white"
+                    >
                       <IoShareOutline />
 
                       <span>Search</span>

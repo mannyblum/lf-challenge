@@ -5,7 +5,10 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
       <div className="text-center max-w-md mx-auto px-6">
-        <div className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
+        <div
+          aria-label="Search Movies"
+          className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-8"
+        >
           <FaSearch className="w-12 h-12 text-purple-400" />
         </div>
 

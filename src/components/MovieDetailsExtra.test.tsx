@@ -9,6 +9,9 @@ import { describe, it, expect } from "vitest";
 
 import MovieDetailsExtra from "./MovieDetailsExtra";
 import type { Credits, Movie } from "../types/movies";
+import { TabsProvider } from "./common/Tabs/context";
+
+import * as TabsHook from "../components/common/Tabs/useTabsContext";
 
 const movieDetails: Movie = {
   id: 2,
@@ -107,6 +110,15 @@ const relatedMovies: Movie[] = [
 ] as Movie[];
 
 describe("MovieDetailsExtra Component", () => {
+  // mock the hook
+  vi.spyOn(TabsHook, "useTabsContext").mockReturnValue({
+    selectedTab: 0,
+    setSelectedTab: vi.fn(),
+    tabButtonRefs: { current: [] },
+    lastEscapeIndex: null,
+    setLastEscapeIndex: vi.fn(),
+  });
+
   it("renders the component", async () => {
     render(
       <MovieDetailsExtra

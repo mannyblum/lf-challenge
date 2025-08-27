@@ -11,7 +11,7 @@ import NotFound from "../../components/common/NotFound";
 import { useLocation } from "wouter";
 
 export default function Results() {
-  const [_, navigate] = useLocation();
+  const [, navigate] = useLocation();
 
   const term = useAppSelector((state) => {
     return state.movies.searchTerm;

@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useRef, useState, type ReactNode } from "react";
 
 interface TabsContextProps {
   selectedTab: number;
@@ -15,12 +9,6 @@ interface TabsContextProps {
 }
 
 const TabsContext = createContext<TabsContextProps | null>(null);
-
-export function useTabsContext() {
-  const ctx = useContext(TabsContext);
-  if (!ctx) throw new Error("useTabsContext must be used within <Tabs>");
-  return ctx;
-}
 
 export const TabsProvider = ({ children }: { children: ReactNode }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -41,3 +29,5 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
     </TabsContext.Provider>
   );
 };
+
+export { TabsContext };
