@@ -7,7 +7,7 @@ import {
   useGetRelatedMoviesQuery,
 } from "../../slices/moviesApi";
 import { useAppSelector } from "../../hooks/rtk";
-import { useParams } from "react-router";
+import { useRoute } from "wouter";
 
 vi.mock("../../slices/moviesApi", async (importOriginal) => {
   const actual = await importOriginal<
@@ -21,24 +21,21 @@ vi.mock("../../slices/moviesApi", async (importOriginal) => {
   };
 });
 
-const mockedUseNavigate = vi.fn();
-vi.mock("react-router", async () => {
-  const actual = await vi.importActual<typeof import("react-router")>(
-    "react-router"
-  );
-  return {
-    ...actual,
-    useNavigate: () => mockedUseNavigate,
-    useParams: vi.fn(),
-  };
-});
-
 vi.mock("../../hooks/rtk", async (importOriginal) => {
   const actual = await importOriginal<typeof import("../../hooks/rtk")>();
   return {
     ...actual,
     useAppSelector: vi.fn(),
     useAppDispatch: vi.fn(),
+  };
+});
+
+// const mockSetLocation = vi.fn();
+vi.mock("wouter", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("wouter")>();
+  return {
+    ...actual,
+    useRoute: vi.fn(),
   };
 });
 
@@ -72,6 +69,8 @@ const mockMovie = {
   release_date: "2025-05-17",
 };
 
+const mockUseRoute = useRoute as Mock;
+
 describe("Details", () => {
   beforeEach(() => {
     vi.resetAllMocks();
@@ -79,7 +78,7 @@ describe("Details", () => {
 
   it("should use selectedMovieId when is not -1", async () => {
     (useAppSelector as unknown as Mock).mockReturnValue(1);
-    (useParams as Mock).mockReturnValue({ movieId: "10" });
+    mockUseRoute.mockReturnValue([true, { movieId: "10" }]);
 
     (useGetMovieDetailsQuery as Mock).mockReturnValue({
       data: mockMovie,
@@ -106,7 +105,7 @@ describe("Details", () => {
 
   it("should use params.movieId when selectedMovie is -1", async () => {
     (useAppSelector as unknown as Mock).mockReturnValue(-1);
-    (useParams as Mock).mockReturnValue({ movieId: "1" });
+    mockUseRoute.mockReturnValue({ movieId: "1" });
 
     (useGetMovieDetailsQuery as Mock).mockReturnValue({
       data: mockMovie,

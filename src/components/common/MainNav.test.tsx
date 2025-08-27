@@ -3,14 +3,12 @@ import { describe, it, expect, vi } from "vitest";
 import MainNav from "./MainNav";
 import userEvent from "@testing-library/user-event";
 
-const mockedUseNavigate = vi.fn();
-vi.mock("react-router", async () => {
-  const actual = await vi.importActual<typeof import("react-router")>(
-    "react-router"
-  );
+const mockSetLocation = vi.fn();
+vi.mock("wouter", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("wouter")>();
   return {
     ...actual,
-    useNavigate: () => mockedUseNavigate, // return a spy
+    useLocation: () => ["/", mockSetLocation] as const,
   };
 });
 
@@ -30,6 +28,8 @@ describe("MainNav", () => {
   });
 
   it("should navigate to '/' when Home button is clicked", async () => {
+    const mockLocation = "/";
+
     render(<MainNav />);
 
     const user = userEvent.setup();
@@ -37,10 +37,11 @@ describe("MainNav", () => {
     const homeButton = screen.getByRole("button", { name: /home/i });
     expect(homeButton).toBeInTheDocument();
     await user.click(homeButton);
-    expect(mockedUseNavigate).toHaveBeenCalledWith("/", { replace: true });
+    expect(mockSetLocation).toHaveBeenCalledWith(mockLocation);
   });
 
   it("should navigate to '/browse' when Browse button is clicked", async () => {
+    const mockLocation = "/browse";
     render(<MainNav />);
 
     const user = userEvent.setup();
@@ -48,8 +49,6 @@ describe("MainNav", () => {
     const browseButton = screen.getByRole("button", { name: /browse/i });
     expect(browseButton).toBeInTheDocument();
     await user.click(browseButton);
-    expect(mockedUseNavigate).toHaveBeenCalledWith("/browse", {
-      replace: true,
-    });
+    expect(mockSetLocation).toHaveBeenCalledWith(mockLocation);
   });
 });

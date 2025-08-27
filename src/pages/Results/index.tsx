@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 import { useAppSelector } from "../../hooks/rtk";
@@ -12,7 +11,6 @@ import NotFound from "../../components/common/NotFound";
 import { useLocation } from "wouter";
 
 export default function Results() {
-  // const navigate = useNavigate();
   const [_, navigate] = useLocation();
 
   const term = useAppSelector((state) => {
@@ -21,7 +19,6 @@ export default function Results() {
 
   useEffect(() => {
     if (!term) {
-      // navigate("/", { replace: true });
       navigate("/");
     }
   }, [term, navigate]);

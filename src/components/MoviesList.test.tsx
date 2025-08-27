@@ -3,14 +3,12 @@ import { describe, it, expect, vi } from "vitest";
 import MoviesList from "./MoviesList";
 import type { Movie } from "../types/movies";
 
-const mockedUseNavigate = vi.fn();
-vi.mock("react-router", async () => {
-  const actual = await vi.importActual<typeof import("react-router")>(
-    "react-router"
-  );
+const mockSetLocation = vi.fn();
+vi.mock("wouter", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("wouter")>();
   return {
     ...actual,
-    useNavigate: () => mockedUseNavigate, // return a spy
+    useLocation: () => ["/", mockSetLocation] as const,
   };
 });
 
@@ -70,15 +68,13 @@ describe("MoviesList component", () => {
   });
 
   it("should navigate to /details/ with movieId and dispatch the selected movie", async () => {
+    const mockLocation = "/details/2";
     render(<MoviesList movies={movies} />);
 
-    // find movie in list
     await waitFor(() => {
       const movieItem = screen.getByText("Spaceballs");
-
-      expect(movieItem).toBeDefined();
       fireEvent.click(movieItem);
-      expect(mockedUseNavigate).toHaveBeenCalledWith("/details/2");
+      expect(mockSetLocation).toHaveBeenCalledWith(mockLocation);
     });
   });
 

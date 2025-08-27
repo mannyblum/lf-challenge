@@ -1,6 +1,5 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
-// import { useNavigate } from "react-router";
 
 import { useAppDispatch } from "../../hooks/rtk";
 
@@ -16,7 +15,6 @@ export default function SearchBar({ size, noButton }: SearchBarProps) {
   const [localTerm, setLocalTerm] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // const navigate = useNavigate();
   const [_, navigate] = useLocation();
   const dispatch = useAppDispatch();
 

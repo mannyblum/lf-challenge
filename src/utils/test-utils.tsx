@@ -1,6 +1,5 @@
 import React, { type ReactElement } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router";
 import {
   render as tlrRender,
   type RenderOptions,
@@ -9,11 +8,7 @@ import {
 import { store } from "../app/store";
 
 const AllProviders = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </Provider>
-  );
+  return <Provider store={store}>{children}</Provider>;
 };
 
 const customRender = (ui: ReactElement, options?: RenderOptions) =>

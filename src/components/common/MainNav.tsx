@@ -1,20 +1,15 @@
-// import { useNavigate } from "react-router";
-
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import { useLocation } from "wouter";
 
 export default function MainNav() {
-  // const navigate = useNavigate();
   const [_, navigate] = useLocation();
 
   const goToHome = () => {
-    // navigate("/", { replace: true });
     navigate("/");
   };
 
   const goToBrowse = () => {
-    // navigate("/browse", { replace: true });
     navigate("/browse");
   };
 

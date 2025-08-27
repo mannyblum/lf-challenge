@@ -1,4 +1,3 @@
-// import { MemoryRouter, Route, Routes } from "react-router";
 import { Route, Router, Switch } from "wouter";
 import { memoryLocation } from "wouter/memory-location";
 
@@ -35,18 +34,6 @@ function App() {
       </Switch>
     </Router>
   );
-
-  // return (
-  //   <MemoryRouter initialEntries={["/"]}>
-  //     <Routes>
-  //       <Route path="/" index element={<Home />} />
-  //       <Route path="results/:term" element={<Results />} />
-  //       <Route path="browse" element={<Browse />} />
-  //       <Route path="details/:movieId" element={<Details />} />
-  //       <Route path="*" element={<NotFound />} />
-  //     </Routes>
-  //   </MemoryRouter>
-  // );
 }
 
 export default App;

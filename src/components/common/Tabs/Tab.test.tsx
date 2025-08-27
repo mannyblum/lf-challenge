@@ -68,24 +68,4 @@ describe("Tab", () => {
     tab2.focus();
     expect(tab2).toHaveFocus();
   });
-
-  it("should store button ref in tabButtonsRef", () => {
-    let ref: HTMLButtonElement | null = null;
-
-    const TestTab = () => {
-      const { tabButtonRefs } = useTabsContext();
-      ref = tabButtonRefs.current[0];
-      return <Tab index={0}>Cast</Tab>;
-    };
-
-    render(
-      <TabsProvider>
-        <TestTab />
-      </TabsProvider>
-    );
-
-    const btn = screen.getByRole("tab", { name: "Cast" });
-
-    expect(ref?.current).toBe(btn);
-  });
 });

@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router";
 import { FiTrendingUp } from "react-icons/fi";
 
 import { useAppDispatch } from "../hooks/rtk";
@@ -19,7 +18,6 @@ export default function Trending() {
   const topFive = trendingMovies.slice(0, 5);
 
   const handleGetMovieDetails = (movieId: number) => {
-    console.log("getmovie", movieId);
     dispatch(setSelectedMovieId(movieId));
     navigate("/details/" + movieId);
   };

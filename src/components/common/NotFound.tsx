@@ -1,4 +1,3 @@
-// import { Link } from "react-router";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "wouter";
 
