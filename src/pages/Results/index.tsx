@@ -38,22 +38,24 @@ export default function Results() {
 
   if (isSuccess && movies?.results?.length > 0) {
     return (
-      <div className="flex flex-col">
-        <MainNav />
-        <div role="main" className="container mx-auto px-4">
-          <div className="my-8">
-            <h2 className="text-3xl font-bold text-white mb-2">
-              Search Results for "{term}"
-            </h2>
-            <p className="text-slate-400">
-              {movies?.results.length} movies found
-            </p>
+      <div role="main" className="container h-full w-full mx-auto">
+        <div className="flex flex-col py-5 px-4 items-center mx-auto bg-[#050a1b]">
+          <MainNav />
+          <div role="main" className="container mx-auto px-4">
+            <div className="my-8">
+              <h2 className="text-3xl font-bold text-white mb-2">
+                Search Results for "{term}"
+              </h2>
+              <p className="text-slate-400">
+                {movies?.results.length} movies found
+              </p>
+            </div>
+            {movies.results.length > 0 ? (
+              <MoviesList movies={movies.results} />
+            ) : (
+              <NotFound />
+            )}
           </div>
-          {movies.results.length > 0 ? (
-            <MoviesList movies={movies.results} />
-          ) : (
-            <NotFound />
-          )}
         </div>
       </div>
     );

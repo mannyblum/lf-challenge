@@ -1,5 +1,5 @@
 import { CiCalendar } from "react-icons/ci";
-import { FaStar } from "react-icons/fa6";
+import { FaRegImage, FaStar } from "react-icons/fa6";
 // import { useNavigate } from "react-router";
 import { useLocation } from "wouter";
 
@@ -65,23 +65,32 @@ export default function MoviesList({ movies, related }: MoviesListProps) {
                 <div className="absolute top-3 right-3 text-green-400 bg-black/70 px-2 py-1 rounded-full flex items-center gap-1.5">
                   <FaStar />
                   <span className="text-sm font-semibold py-0.5 leading-[1]">
-                    8.5
+                    {movie.vote_average?.toFixed(1)}
                   </span>
                 </div>
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  className={`w-full h-80 object-cover object-top rounded-t-xl`}
-                  alt={movie.original_title}
-                />
-                <div className="p-4">
+                {!movie.poster_path ? (
+                  <div className="bg-gray-400 w-full h-80 rounded-t-xl flex flex-col justify-center items-center">
+                    <FaRegImage className="text-7xl text-gray-500" />
+                    <p className="text-gray-600 !text-2xl">
+                      Image not available
+                    </p>
+                  </div>
+                ) : (
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    className={`w-full h-80 object-cover object-top rounded-t-xl`}
+                    alt={movie.original_title}
+                  />
+                )}
+                <div className="p-4 text-left">
                   <h4 className="text-white group-hover:text-purple-300 line-clamp-1 transition-colors font-semibold mb-2 lg:text-lg md:text-xl text-2xl">
                     {movie.original_title}
                   </h4>
                   <div className="flex flex-col gap-4 justify-between`">
                     <div className="flex items-center gap-3 text-sm text-slate-400 mb-2">
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center justify-center gap-1">
                         <CiCalendar className="md:text-lg text-2xl" />
-                        <p className="leading-[1.1] pt-0.5 md:text-md text-lg">
+                        <p className="!mb-0 leading-[1.1] pb-0 pt-0.5 md:text-md text-lg">
                           {renderReleaseYear(movie.release_date) || "Unknown"}
                         </p>
                       </div>
