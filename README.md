@@ -1,4 +1,4 @@
-# Livefront Challenge
+# MovieKaos App
 
 ## About
 
@@ -21,6 +21,7 @@ VITE_TMDB_API_KEY=xxxxxx
   - Awards
   - Related Movies
 - Browse Page (Popular Movies)
+
   - list of 20 results
 
 - Responsive
